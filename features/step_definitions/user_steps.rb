@@ -72,17 +72,17 @@ end
 #   page.should_not have_content(text)
 # end
 
-Then /^I go to the home page$/ do
-  visit '/'
-end
-
-Given /^I am on the home page$/ do
-  visit '/'
-end
-
-Given /^I go to the sign up page$/ do
-  visit '/users/sign_up'
-end
+# Then /^I go to the home page$/ do
+#   visit '/'
+# end
+# 
+# Given /^I am on the home page$/ do
+#   visit '/'
+# end
+# 
+# Given /^I go to the sign up page$/ do
+#   visit '/users/sign_up'
+# end
 
 Given /^I fill in the following:$/ do |table|
   # table is a Cucumber::Ast::Table
