@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
-gem 'devise'
+gem 'devise', ">= 1.5.0"
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -30,10 +30,11 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 group :test, :development do
-  gem 'cucumber-rails'
-  gem 'rspec-rails', "~> 2.6"
-  gem 'capybara', "~> 1.1.2"
-  # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner'
+  gem "rspec-rails", ">= 2.8.0.rc1"
+  gem "factory_girl_rails", ">= 1.4.0"
+  gem "cucumber-rails", ">= 1.2.0"
+  gem "capybara", ">=1.1.2"
+  gem "database_cleaner", ">= 0.7.0"
+  gem "launchy", ">= 2.0.5"
 end
 
