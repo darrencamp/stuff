@@ -20,9 +20,9 @@ class LoansController < ApplicationController
     
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to @loan, notice: 'Loan was successully created.'}
+        format.html { redirect_to @loan, notice => 'Loan was successully created.'}
       else
-        format.html { render action: "new" }
+        format.html { render :action => "new" }
       end
     end
   end
