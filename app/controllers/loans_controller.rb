@@ -17,6 +17,7 @@ class LoansController < ApplicationController
   
   def create
     @loan = Loan.new(params[:loan])
+    @loan.user_id = current_user.id
     
     respond_to do |format|
       if @loan.save

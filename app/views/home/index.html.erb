@@ -1,13 +1,6 @@
 <h3>Home</h3>
 
 <% if user_signed_in? %>
-  <div>Hello <%= current_user.name %></div>
-  <div>
-		<ul>
-			<% @loans.each do |l| %>
-				<li><%= l.person %> has <%= l.item %></li>
-			<% end %>
-		</ul>
-  </div>
-  <div><%= link_to "New loan.", new_loan_path %></div>
+	<div>Hello <%= current_user.name %></div>
+  	<%= render 'shared/loans' %>
 <% end %>

@@ -1,0 +1,8 @@
+<div>
+	<ul>
+		<% @loans.each do |l| %>
+			<li><%= l.person %> has <%= l.item %></li>
+		<% end %>
+	</ul>
+</div>
+<div><%= link_to "New loan.", new_loan_path %></div>
