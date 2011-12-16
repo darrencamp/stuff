@@ -1,4 +1,5 @@
 class LoansController < ApplicationController
+  
   def index
     
   end
@@ -13,6 +14,14 @@ class LoansController < ApplicationController
   
   def new
     @loan = Loan.new
+  end
+  
+  def edit
+    @loan = Loan.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render :action => "index" }
+    end
   end
   
   def create

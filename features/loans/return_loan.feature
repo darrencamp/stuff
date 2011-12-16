@@ -5,9 +5,6 @@ Feature: A loaned item is returned
 	
 	  Scenario: I sign in and mark a loan as returned
     	Given I am a user named "foo" with an email "user@test.com" and password "please"
-		Given the following users exist
-			| id | email         | password |
-			| 1  | user@test.com | please   |
 		Given the following loans exist
 			| user_id | item | contact   | person |
 			| 1       | test | me@me.com | darren |

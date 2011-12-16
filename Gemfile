@@ -32,6 +32,7 @@ gem 'jquery-rails'
 group :test, :development do
   gem "rspec-rails", ">= 2.8.0.rc1"
   gem "factory_girl_rails", ">= 1.4.0"
+  gem "pickle"
   gem "cucumber-rails", ">= 1.2.0"
   gem "capybara", ">=1.1.2"
   gem "database_cleaner", ">= 0.7.0"
