@@ -1,7 +1,16 @@
 <div>
 	<ul>
 		<% @loans.each do |l| %>
-			<li><p><%= l.person %> has <%= l.item %></p><div><%= link_to "Return loan.", edit_loan_path(l.id)%></div></li>
+			<li>
+				<p><%= l.person %> has <%= l.item %></p>
+				<div>
+					<%= form_for(l) do |f| %>
+						<div class="actions">
+							<p><%= f.submit "Return loan." %></p>
+						</div>	
+					<% end %>
+				</div>
+			</li>
 		<% end %>
 	</ul>
 </div>

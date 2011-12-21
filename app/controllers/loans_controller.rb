@@ -1,7 +1,9 @@
 class LoansController < ApplicationController
   
   def index
-    
+    if user_signed_in?
+      @loans = Loan.find_all_by_user_id(current_user.id)
+    end
   end
   
   def show
@@ -16,14 +18,6 @@ class LoansController < ApplicationController
     @loan = Loan.new
   end
   
-  def edit
-    @loan = Loan.find(params[:id])
-    
-    respond_to do |format|
-      format.html { render :action => "index" }
-    end
-  end
-  
   def create
     @loan = Loan.new(params[:loan])
     @loan.user_id = current_user.id
@@ -33,6 +27,19 @@ class LoansController < ApplicationController
         format.html { redirect_to @loan, notice => 'Loan was successully created.'}
       else
         format.html { render :action => "new" }
+      end
+    end
+  end
+  
+  def update
+    @loan = Loan.find(params[:id])
+    @loan.returned_date = DateTime.now
+    
+    respond_to do |format|
+      if @loan.save
+        format.html { redirect_to root_url }
+      else
+        format.html { redirect_to home_path }
       end
     end
   end

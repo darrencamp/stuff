@@ -11,5 +11,5 @@ Feature: A loaned item is returned
     	When I sign in as "user@test.com/please"
     	Then I should be signed in
         Then I should see "darren has test"
-    	When I follow "Return loan."
+    	When I press "Return loan."
     	Then I should not see "darren has test"	
