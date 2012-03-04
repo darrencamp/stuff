@@ -19,7 +19,7 @@ Given /^I am signed up as "(.*)\/(.*)"$/ do |email, password|
   step %{I fill in "Email" with "#{email}"}
   step %{I fill in "Password" with "#{password}"}
   step %{I fill in "Password confirmation" with "#{password}"}
-  step %{I press "Sign up"}
+  step %{I press "Login"}
   step %{I should see "You have signed up successfully. If enabled, a confirmation was sent to your e-mail."}
   step %{I am logout}
 end
@@ -37,7 +37,7 @@ When /^I sign in as "(.*)\/(.*)"$/ do |email, password|
   step %{I go to the sign in page}
   step %{I fill in "Email" with "#{email}"}
   step %{I fill in "Password" with "#{password}"}
-  step %{I press "Sign in"}
+  step %{I press "Login"}
 end
 
 Then /^I should be signed in$/ do
