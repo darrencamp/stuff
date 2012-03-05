@@ -31,7 +31,7 @@ class LoansController < ApplicationController
     end
   end
   
-  def update
+  def destroy
     @loan = Loan.find(params[:id])
     @loan.returned_date = DateTime.now
     
