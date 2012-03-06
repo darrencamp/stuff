@@ -9,10 +9,14 @@
 <body>
     <%= render 'shared/navigation' %>
     <div class="container">
-		<%- flash.each do |name, msg| -%>
-			<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-		<%- end -%>
-		<%= yield %>
+      <div class="row">
+    		<%- flash.each do |name, msg| -%>
+    			<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    		<%- end -%>
+        <div class="span12">
+    		<%= yield %>
+      </div>
+      </div>
 	</div>
 </body>
 </html>

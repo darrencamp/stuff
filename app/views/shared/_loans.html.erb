@@ -2,13 +2,15 @@
   <ul>
     <% @loans.each do |l| %>
       <li>
-        <p><%= l.person %> has <%= l.item %></p>
-        <div>
-          <%= form_for(l, :html => { :method => 'delete' } ) do |f| %>
-            <div class="actions">
-              <p><%= f.submit "Return loan." %></p>
-            </div>  
-          <% end %>        
+        <div class="loan-item">
+          <p><%= l.person %> has <%= l.item %></p>
+          <div>
+            <%= form_for(l, :html => { :method => 'delete' } ) do |f| %>
+              <div class="actions">
+                <p><%= f.submit "Return loan." %></p>
+              </div>  
+            <% end %>        
+          </div>
         </div>
       </li>
     <% end %>
