@@ -3,7 +3,7 @@ class LoansController < ApplicationController
   before_filter :authenticate_user!
     
   def index
-    @loans = Loan.find_all_by_user_id(current_user.id)
+    @loans = Loan.where('returned_date is null and user_id = ?', current_user.id)
   end
   
   def show
@@ -24,7 +24,7 @@ class LoansController < ApplicationController
     
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to @loan, notice => 'Loan was successully created.'}
+        format.html { redirect_to @loan }
       else
         format.html { render :action => "new" }
       end
@@ -37,9 +37,9 @@ class LoansController < ApplicationController
     
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to root_url }
+        format.html { redirect_to :action => "index", :notice => 'Loan was sucessfully returned.' }
       else
-        format.html { redirect_to home_path }
+        format.html { redirect_to @loan, :notice => 'Loan could not be successfully returned.' }
       end
     end
   end
