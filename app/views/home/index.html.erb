@@ -1,6 +1,5 @@
 <h3>Home</h3>
 
 <% if user_signed_in? %>
-	<div>Hello <%= current_user.name %></div>
   	<%= render 'shared/loans' %>
 <% end %>
