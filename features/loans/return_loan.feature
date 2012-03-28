@@ -6,10 +6,10 @@ Feature: A loaned item is returned
       Scenario: I sign in and mark a loan as returned
         Given I am a user named "foo" with an email "user@test.com" and password "please"
         Given the following loans exist
-            | user_id | item | contact   | person |
-            | 1       | test | me@me.com | darren |
+            | user_id | item | contact   |
+            | 1       | test | me@me.com |
         When I sign in as "user@test.com/please"
         Then I should be signed in
-        Then I should see "darren has test"
+        Then I should see "me@me.com has test"
         When I press "Return loan."
         Then I should not see "darren has test" 

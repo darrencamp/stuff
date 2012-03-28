@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :loan do
-    person "MyString"
     contact "MyString"
     item "MyString"
   end
