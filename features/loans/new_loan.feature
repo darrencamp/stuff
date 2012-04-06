@@ -8,7 +8,7 @@ Feature: New Loan
       	When I sign in as "user@test.com/please"
       	Then I should be signed in
       	When I follow "New loan."
-		And I fill in "Contact" with "you@email.com"
+		And I fill in "Borrower" with "you@email.com"
       	And I fill in "Item" with "drill press"
       	And I press "Create"
       	And I go to the homepage

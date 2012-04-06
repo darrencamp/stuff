@@ -23,6 +23,9 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.new(params[:loan])
     @loan.user_id = current_user.id
+    @borrower = Borrower.find_by_email(params[:borrower][:email])
+    @borrower = Borrower.new(params[:borrower]) unless @borrower
+    @loan.borrower = @borrower
     
     respond_to do |format|
       if @loan.save
