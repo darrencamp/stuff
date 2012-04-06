@@ -1,7 +1,6 @@
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :loan do
-    item "MyString"
+  factory :borrower do
   end
 end
