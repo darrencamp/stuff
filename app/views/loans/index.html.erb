@@ -1,3 +1,30 @@
 <% if user_signed_in? %>
-  	<%= render 'shared/loans' %>
+  <h2>Create a new loan</h2>
+    <%= form_tag "/loans" do %>
+      <div><%= email_field :borrower, :email, :placeholder => "email address" %></div>
+      <div><%= text_field :item, :name, :placeholder => "item name" %></div>
+      <div class="actions">
+        <%= submit_tag "Create Loan" %>
+      </div>
+    <% end %>
+
+<div>
+  <ul>
+    <% @loans.each do |l| %>
+      <li>
+        <div class="loan-item">
+          <p><%= l.borrower.email %> has <%= l.item %></p>
+          <div>
+            <%= form_for(l, :html => { :method => 'delete' } ) do |f| %>
+              <div class="actions">
+                <p><%= f.submit "Return loan." %></p>
+              </div>  
+            <% end %>        
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <% end %>

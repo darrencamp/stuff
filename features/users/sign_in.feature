@@ -27,7 +27,7 @@ Feature: Users - Sign in
       When I go to the sign in page
       And I sign in as "user@test.com/please"
       Then I should see "Signed in successfully."
-	  And I should see "New loan."
+	    And I should see "Create a new loan"
       And I should be signed in
       When I return next time
       Then I should be already signed in

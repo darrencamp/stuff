@@ -7,9 +7,8 @@ Feature: New Loan
       	Given I am a user named "foo" with an email "user@test.com" and password "please"
       	When I sign in as "user@test.com/please"
       	Then I should be signed in
-      	When I follow "New loan."
-		And I fill in "Email" with "you@email.com"
-      	And I fill in "Item" with "drill press"
-      	And I press "Create"
+		When I fill in "borrower_email" with "you@email.com"
+      	And I fill in "item_name" with "drill press"
+      	And I press "Create Loan"
       	And I go to the homepage
       	Then I should see "you@email.com has drill press"
