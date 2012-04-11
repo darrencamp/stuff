@@ -23,6 +23,7 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.new(params[:loan])
     @loan.item = params[:item][:name]
+    @loan.created_at = DateTime.now
     @loan.user_id = current_user.id
     @borrower = Borrower.find_by_email(params[:borrower][:email])
     @borrower = Borrower.new(params[:borrower]) unless @borrower
