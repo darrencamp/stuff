@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'devise', ">= 1.5.0"
-gem 'less-rails-bootstrap'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -10,6 +9,8 @@ gem 'less-rails-bootstrap'
 gem 'sqlite3'
 
 gem 'json'
+gem 'haml'
+gem 'modernizr-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

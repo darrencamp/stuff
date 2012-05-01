@@ -1,0 +1,9 @@
+%header{:id=>"page-header", :role=>"banner"}
+  %nav{:id=>"utility"}
+    - if user_signed_in?
+      = link_to 'Hello <em>'+current_user.name+'</em>', edit_user_registration_path
+      = link_to 'Logout', destroy_user_session_path, :method=>'delete'       
+    - else
+      = link_to 'Sign up', new_user_registration_path
+      = link_to 'Login', new_user_session_path
+  %h1 Stuff  
