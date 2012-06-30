@@ -1,6 +1,7 @@
 Stuff::Application.routes.draw do
   devise_for :users
   resources :loans
+  resources :reminder
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

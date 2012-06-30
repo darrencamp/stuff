@@ -29,6 +29,14 @@
                   </div>  
                 <% end %>        
               </span>
+              <span class="remind-loan">
+                <%= form_tag "/reminder" do %>
+                  <div>
+                    <%= hidden_field_tag 'id', l.id %>
+                    <%= submit_tag "Remind" %>
+                  </div>  
+                <% end %>        
+              </span>
             </li>
           <% end %>
         </ul>
