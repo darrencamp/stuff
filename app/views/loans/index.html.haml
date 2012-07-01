@@ -1,0 +1,28 @@
+- if user_signed_in?
+  #new-loan
+    %h2 Create a new loan
+    = form_tag "/loans" do
+      = email_field :borrower, :email, :placeholder => "email address"
+      = text_field :item, :name, :placeholder => "item name"
+      = submit_tag "Create Loan"
+
+  .content
+    .loans-container
+      .loan-header
+        %h3 Loans
+      .loans
+        %ul.loan-list
+          - @loans.each do |l|
+            %li.loan-item
+              .loan-details
+                %p #{l.borrower.email} has #{l.item}
+                %p #{time_ago_in_words(l.created_at)} ago
+              %span.remove-loan
+                = form_for(l, :html => { :method => 'delete'}) do |f|
+                  %div
+                    = f.submit "Return loan."
+              %span.remind-loan
+                = form_tag "/reminder" do
+                  %div
+                    = hidden_field_tag 'id', l.id
+                    = submit_tag "Remind"
