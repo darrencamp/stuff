@@ -1,0 +1,15 @@
+= form_for(@loan) do |f|
+  - if @loan.errors.any?
+    #error_explaination
+      %h2 #{pluralize(@loan.errors.count, "error")} stopped this loan from being saved:
+      %ul
+        - @loan.errors.full_messages.each do |msg|
+          %li=msg
+  %div
+    = label :borrower, :email
+    = email_field :borrower, :email, :placeholder => "email address"
+  %div
+    = f.label :item
+    = f.text_field :item
+  .actions
+    = f.submit
