@@ -4,6 +4,6 @@ class ReminderController < ApplicationController
 
   def create
     @loan = Loan.find(params[:id])
-    LoanMailer.loan_reminder(current_user, @loan)
+    LoanMailer.loan_reminder(current_user, @loan).deliver
   end
 end

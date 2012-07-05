@@ -15,4 +15,4 @@ Feature: Loan Reminders
             Then I should be signed in
             Then I should see "me@me.com has test"
             When I press "Remind"
-            Then me@me.com should receive an email
+            Then "me@me.com" should receive an email

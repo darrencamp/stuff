@@ -4,6 +4,7 @@ class LoanMailer < ActionMailer::Base
   def loan_reminder(user, loan)
     @user = user
     @loan = loan
-    mail(:to => loan.borrower.email, :subject => "Reminder")
+    @borrower = Borrower.find_by_id(@loan.borrower_id)
+    mail(:to => @borrower.email, :subject => "[Stuff] Loan Reminder")
   end
 end
