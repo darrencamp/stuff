@@ -1,10 +1,4 @@
 - if user_signed_in?
-  #new-loan
-    %h2 Create a new loan
-    = form_tag "/loans" do
-      = email_field :borrower, :email, :placeholder => "email address"
-      = text_field :item, :name, :placeholder => "item name"
-      = submit_tag "Create Loan"
 
   .content
     .loans-container
