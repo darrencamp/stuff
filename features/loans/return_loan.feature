@@ -13,6 +13,8 @@ Feature: A loaned item is returned
             | 1  | me@me.com |
         When I sign in as "user@test.com/please"
         Then I should be signed in
+        And the loan counter should be 1
+        When I follow "Loans"
         Then I should see "me@me.com has test"
         When I press "Return loan."
         Then I should not see "darren has test" 

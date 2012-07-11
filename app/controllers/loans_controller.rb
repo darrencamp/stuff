@@ -31,7 +31,9 @@ class LoansController < ApplicationController
     
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to @loan }
+        format.html { 
+          flash[:notice] = 'loan created.'
+          redirect_to(controller: 'home', action: 'index') }
       else
         format.html { render :action => "new" }
       end

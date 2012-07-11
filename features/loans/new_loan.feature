@@ -10,5 +10,5 @@ Feature: New Loan
 		When I fill in "borrower_email" with "you@email.com"
       	And I fill in "item_name" with "drill press"
       	And I press "Create Loan"
-      	And I go to the homepage
-      	Then I should see "you@email.com has drill press"
+            Then I should see "loan created."
+            And the loan counter should be 1

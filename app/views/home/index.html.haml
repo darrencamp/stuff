@@ -8,13 +8,11 @@
 
   .content
     %ul
-      %li
-        .loan-counter
+      %li.counter
+        .loan
           = link_to 'Loans', :controller => 'loans', :action => 'index'
           %p #{@loans.count}
-      %li
-        .borrowing-counter
-          %a Borrowings 
+      %li.counter
+        .borrowing
+          = link_to 'Borrowing', :controller => 'borrower', :action => 'index' 
           %p #{@borrowing.count}
-
-  = render :template => "loans/index"

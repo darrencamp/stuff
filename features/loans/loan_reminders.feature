@@ -13,6 +13,7 @@ Feature: Loan Reminders
                   | 1  | me@me.com |
             When I sign in as "user@test.com/please"
             Then I should be signed in
+            When I follow "Loans"
             Then I should see "me@me.com has test"
             When I press "Remind"
             Then "me@me.com" should receive an email

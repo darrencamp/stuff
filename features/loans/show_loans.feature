@@ -1,9 +1,9 @@
 Feature: Show a list of items on loan
     As a registered user of the website
-    I want to see the items I have loaned out
-    So that I know which items have been lent.
+    I want to how many loans I have out
+    So that I know how many things I have out on loan.
     
-      Scenario: I sign in and see a list of items lent out.
+      Scenario: I sign in and see a summary of the loans I have.
         Given I am a user named "foo" with an email "user@test.com" and password "please"
         Given the following loans exist
             | user_id | item        | borrower_id |
@@ -15,5 +15,4 @@ Feature: Show a list of items on loan
             | 2  | darren@codingintent.com |
         When I sign in as "user@test.com/please"
         Then I should be signed in
-        Then I should see "me@me.com has Drill Press"
-        Then I should see "darren@codingintent.com has Fight Club"
+        And the loan counter should be 2
