@@ -8,11 +8,11 @@
 
   .content
     %ul
-      %li.counter
-        .loan
+      %li
+        #loan-counter
           = link_to 'Loans', :controller => 'loans', :action => 'index'
           %p #{@loans.count}
-      %li.counter
-        .borrowing
+      %li
+        #borrowing-counter
           = link_to 'Borrowing', :controller => 'borrower', :action => 'index' 
           %p #{@borrowing.count}
