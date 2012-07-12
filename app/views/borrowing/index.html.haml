@@ -1,0 +1,10 @@
+- if user_signed_in?
+  .content
+    .loan-header
+      %h3 Borrowings
+    .loans
+      %ul.loan-list
+        - @borrowings.each do |l|
+          %li.loan-item
+            .loan-details
+              %p You have something
