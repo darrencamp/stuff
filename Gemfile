@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.1'
-gem 'devise', ">= 1.5.0"
+gem 'devise'
+gem 'devise-encryptable'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -9,7 +10,7 @@ gem 'devise', ">= 1.5.0"
 gem 'sqlite3'
 
 gem 'json'
-gem 'haml'
+gem 'haml' # SMELL I f*#@ing hate haml - do we have to use it? Slim if u insist, but I still prefer old ERB
 gem 'modernizr-rails'
 
 # Gems used only for assets and not required
@@ -35,10 +36,14 @@ group :test, :development do
   gem "rspec-rails"
   gem "factory_girl_rails"
   gem "pickle"
-  gem "cucumber-rails"
   gem "capybara"
-  gem "database_cleaner"
   gem "launchy"
   gem 'email_spec'
 end
+
+group :test do
+  gem "cucumber-rails"  
+  gem "database_cleaner"
+end
+
 
