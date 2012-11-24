@@ -1,0 +1,23 @@
+<% form_for(@loan) do |f| %>
+  <% if @loan.errors.any? %>
+    <div id="error_explaination">
+      <h2><%= #{pluralize(@loan.errors.count, "error")} stopped this loan from being saved: %></h2>
+      <ul>
+        <% @loan.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= label :borrower, :email %>
+    <%= email_field :borrower, :email, :placeholder => "email address" %>
+  </div>
+  <div>
+    <%= f.label :item%>
+    <%= f.text_field :item%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

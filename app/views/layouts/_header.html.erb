@@ -1,0 +1,14 @@
+<header id="page-header" role="banner">
+  <nav id="utility">
+    <p>
+      <% if user_signed_in?%>
+        <%= link_to 'Hello '+current_user.name, edit_user_registration_path %>
+        <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+      <% else %>
+        <%= link_to 'Sign up', new_user_registration_path %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+    </p>
+  </nav>
+  <%= link_to(image_tag("logo.png", alt: "stuff", id: "logo"), root_url, title: "stuff") %>
+</header>

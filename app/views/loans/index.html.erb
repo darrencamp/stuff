@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+  <div class="content">
+    <div class="loan-header">
+      <h3>Loans</h3>
+    </div>
+    <div class="loans">
+      <ul class="loan-item">
+        <% @loans.each do |l| %>
+          <li class="loan-item">
+            <div class="loan-details">
+            </div>
+            <span id="remove-loan">
+              <%= form_for(l, :html => {}) do |f| %>
+                <div>
+                  <%= f.submit "Return loan." %>
+                </div>
+              <% end %>
+            </span>
+            <span id="remind-loan">
+              <%= form_tag "/reminder" do %>
+                <div>
+                  <%= hidden_field_tag 'id', l.id %>
+                  <%= submit_tag "Remind" %>
+                </div>
+              <% end %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
