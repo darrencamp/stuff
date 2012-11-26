@@ -10,7 +10,6 @@ gem 'devise-encryptable'
 gem 'sqlite3'
 
 gem 'json'
-gem 'haml' # SMELL I f*#@ing hate haml - do we have to use it? Slim if u insist, but I still prefer old ERB
 gem 'modernizr-rails'
 
 # Gems used only for assets and not required
