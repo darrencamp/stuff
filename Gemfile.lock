@@ -80,7 +80,6 @@ GEM
     ffi (1.1.5)
     gherkin (2.11.5)
       json (>= 1.4.6)
-    haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -185,7 +184,6 @@ DEPENDENCIES
   devise-encryptable
   email_spec
   factory_girl_rails
-  haml
   jquery-rails
   json
   launchy

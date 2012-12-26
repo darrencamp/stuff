@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe LoanController do
+describe LoansController do
 
 end

@@ -15,7 +15,8 @@ Feature: Sign up
         | Password              | please          |
         | Password confirmation | please          |
       And I press "Sign up"
-      Then I should see "Welcome! You have signed up successfully." 
+      Then I should see "A message with a confirmation link has been sent to your email address" 
+      And I should receive a confirmation email
       
     Scenario: User signs up with invalid email
       And I fill in the following:

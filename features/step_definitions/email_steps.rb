@@ -184,6 +184,14 @@ When /^(?:I|they) click the first link in the email$/ do
 end
 
 #
+# Custom email step to support Devise
+#
+
+Then /^I should receive a confirmation email$/ do
+  pending # express the regexp above with the code you wish you had
+end
+
+#
 # Debugging
 # These only work with Rails and OSx ATM since EmailViewer uses RAILS_ROOT and OSx's 'open' command.
 # Patches accepted. ;)
