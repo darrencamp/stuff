@@ -4,23 +4,17 @@
     <%= form_tag "/loans" do %>
       <%= email_field :borrower, :email, :placeholder => "email address" %>
       <%= text_field :item, :name, :placeholder => "item name" %>
-      <%= submit_tag "Create Loan" %>
+      <%= submit_tag "Create Loan", :class => "btn" %>
     <% end %>
   </div>
   <div class="content">
-    <ul>
-      <li>
-        <div id="loan-counter">
-          <%= link_to 'Loans', :controller => 'loans', :action => 'index' %>
-          <p><%= @loans.count %></p>
-        </div>
-      </li> 
-      <li>
-        <div id="borrowing-counter">
-          <%= link_to 'Borrowing', :controller => 'borrowing', :action => 'index' %>
-          <p><%= @borrowing.count %></p>
-        </div>
-      </li> 
-    </ul>
+      <section id="loan-counter">
+        <%= link_to 'Loans', :controller => 'loans', :action => 'index' %>
+        <p><%= @loans.count %></p>
+      </section>
+      <section id="borrowing-counter">
+        <%= link_to 'Borrowing', :controller => 'borrowing', :action => 'index' %>
+        <p><%= @borrowing.count %></p>
+      </section>
   </div>
 <% end %>
