@@ -8,9 +8,11 @@
         <% @loans.each do |l| %>
           <li class="loan-item">
             <div class="loan-details">
+              <p><%= l.borrower.email %> has <%= l.item %></p>
+              <p><%= time_ago_in_words(l.created_at)%> ago</p>
             </div>
             <span id="remove-loan">
-              <%= form_for(l, :html => {}) do |f| %>
+              <%= form_for(l, :html => {:method => 'delete'}) do |f| %>
                 <div>
                   <%= f.submit "Return loan." %>
                 </div>
