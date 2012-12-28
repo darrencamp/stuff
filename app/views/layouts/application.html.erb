@@ -7,7 +7,7 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div id="container">
+    <div class="container-narrow container-fluid">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
       <% end %> 

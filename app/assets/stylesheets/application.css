@@ -5,5 +5,15 @@
  *= require_self
  *= require normalize
  *= require layout
- *= require twitter/bootstrap
+ *= require_tree .
 */
+
+.container-narrow {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.new-loan {
+margin: 60px 0;
+text-align: center;
+}
