@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
 
+  before_filter :redirect_to_welcome
+  
   def index
     if user_signed_in?
       @loans = Loan.where('returned_date is null')
@@ -11,4 +13,8 @@ class HomeController < ApplicationController
     end
   end  
   
+  def redirect_to_welcome
+    redirect_to welcome_path if !user_signed_in?
+      
+  end  
 end
