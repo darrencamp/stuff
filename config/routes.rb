@@ -3,6 +3,8 @@ Stuff::Application.routes.draw do
   resources :loans
   resources :reminder
   resources :borrowing
+  
+  resource :welcome, :only => :show
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
