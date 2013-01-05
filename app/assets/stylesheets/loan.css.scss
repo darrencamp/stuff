@@ -1,6 +1,14 @@
 // Place all the styles related to the Loan controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.center-content {
+  text-align: center;
+}
+
+.top-margin {
+  margin-top: 10px;
+}
+
 .loans-container {
   width: 300px;
   margin-bottom: 46px;
@@ -20,11 +28,11 @@
   padding: 0 10px;
   height: 32px;
   line-height: 34px;
-}
 
-  .loan-header h3 {
-    color: #FEFEFE;
+  h3 {
+    color: #FEFEFE;    
   }
+}
 
 .loan-list {
   min-height: 30px;
@@ -42,8 +50,12 @@ ul.loan-list {
   color: #888;
   background-color: #FEFEFE;
   font-weight: 500;
-}
-  
-  .loan-item li {
-    line-height: 18px;
+
+  li {
+    line-height: 18px;    
   }
+}
+
+.create-loan {
+  text-align: center;
+}
