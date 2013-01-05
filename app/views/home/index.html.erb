@@ -12,16 +12,20 @@
     <% end %>
   </div>
   <div class="content row top-margin">
-      <section id="loan-counter" class="span4 offset2">
+      <section id="loan-counter" class="span4 offset2 counter-container">
         <%= link_to 'Loans', :controller => 'loans', :action => 'index' do %>
-          <img src="http://placehold.it/350x150&amp;text=Loans">
-          <p><%= @loans.count %></p>
+          <img src="http://placehold.it/350x150&amp;text=Loans" class="loans-image">
+          <div class="counter">
+            <p><%= @loans.count %></p>
+          </div>
         <% end %>
       </section>
-      <section id="borrowing-counter" class="span4">
+      <section id="borrowing-counter" class="span4 counter-container">
         <%= link_to 'Borrowing', :controller => 'borrowing', :action => 'index' do %>
-          <img src="http://placehold.it/350x150&amp;text=Borrowed">
-          <p><%= @borrowing.count %></p>
+          <img src="http://placehold.it/350x150&amp;text=Borrowed" class="loans-image">
+          <div class="counter">
+            <p><%= @borrowing.count %></p>
+          </div>
         <% end %>
       </section>
   </div>

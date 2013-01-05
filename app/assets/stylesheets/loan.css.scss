@@ -9,6 +9,21 @@
   margin-top: 10px;
 }
 
+.counter-container {
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  left: 281px;
+  top: 47px;
+  font-size: 62px;
+}
+
+.loans-image {
+  z-index: -1;
+}
+
 .loans-container {
   width: 300px;
   margin-bottom: 46px;
