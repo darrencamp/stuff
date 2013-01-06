@@ -1,17 +1,9 @@
 <% if user_signed_in? %>
-<<<<<<< HEAD
-  <div class="new-loan">
-=======
   <div id="new-loan" class="new-loan">
->>>>>>> 67bfc885d9db7a25825a0cc27dd14c4dedfad963
     <h2>Create a new loan</h2>
-    <%= form_tag "/loans" do %>
-      <div>
-        <%= email_field :borrower, :email, :placeholder => "email address" %>
-      </div>
-      <div>
-        <%= text_field :item, :name, :placeholder => "item name" %>
-      </div>
+    <%= form_tag "/loans", :class => "form-inline" do %>
+      <%= email_field :borrower, :email, :placeholder => "email address" %>
+      <%= text_field :item, :name, :placeholder => "item name" %>
       <%= submit_tag "Create Loan", :class => "btn" %>
     <% end %>
   </div>

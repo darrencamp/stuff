@@ -16,7 +16,6 @@
     <%= yield(:head) %>
   </head>
   <body>
-<<<<<<< HEAD
     <div id="wrap">
       
       <header class="navbar navbar-fixed-top">
@@ -45,15 +44,5 @@
       <div id="push"></div>
     </div><!-- end of #wrap -->
       <%= render 'layouts/footer' %>
-=======
-    <%= render 'layouts/header' %>
-    <div class="container-narrow container-fluid">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-      <% end %> 
-      <%= yield %>
-    </div>
-    <%= render 'layouts/footer' %>
->>>>>>> 67bfc885d9db7a25825a0cc27dd14c4dedfad963
   </body>
 </html>

@@ -30,4 +30,8 @@ Stuff::Application.configure do
   
   # Required by Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
+  # Required to autoload form builder
+ # config.autoload_paths << File.join(config.root, "lib")
+  config.autoload_paths += %W(#{config.root}/lib)
 end

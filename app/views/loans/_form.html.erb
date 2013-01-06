@@ -10,12 +10,10 @@
     </div>
   <% end %>
   <div>
-    <%= label :borrower, :email %>
     <%= email_field :borrower, :email, :placeholder => "email address" %>
   </div>
   <div>
-    <%= f.label :item%>
-    <%= f.text_field :item%>
+    <%= f.text_field :item %>
   </div>
   <div class="actions">
     <%= f.submit %>
