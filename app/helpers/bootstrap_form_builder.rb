@@ -13,7 +13,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   
   def email_field(attribute, options={})
     label_content = options[:label] || options
-    bootstrap_control(attribute, label_content) { super }     
+    bootstrap_control(attribute, label_content, options) { super }     
   end
   
   def submit(value=nil, options={})
@@ -37,9 +37,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     
   private
   
-  def bootstrap_control(attribute, label_content)
+  def bootstrap_control(attribute, label_content, options={})
     @template.content_tag(:div, :class => 'control-group') do
-      label(attribute, label_content, :class => 'control-label') + 
+      label(attribute, label_content, {:class => 'control-label'}) + 
       @template.content_tag(:div, :class => 'controls') do
         yield
       end

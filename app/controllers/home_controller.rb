@@ -14,7 +14,6 @@ class HomeController < ApplicationController
   end  
   
   def redirect_to_welcome
-    redirect_to welcome_path if !user_signed_in?
-      
+    redirect_to welcome_path, :flash => flash if !user_signed_in?   
   end  
 end

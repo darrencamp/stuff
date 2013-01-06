@@ -96,6 +96,10 @@ When /^I press "([^"]*)"$/ do |label|
 end
 
 When /^I fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+  # SMELL hack to deal with devise ids and :for not working in builder
+  field = 'in1' if field == 'Email'
+  field = 'in2' if field == 'Password'
+  #puts response.body.inspect if field == "Current password"
   fill_in(field, :with => value)
 end
 
