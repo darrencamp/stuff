@@ -1,6 +1,6 @@
 <div class="masthead">
   <ul class="nav nav-pills pull-right">
-    <li class="active"><a href="#">Home</a></li>
+    <li class="active"><a href="#">Welcome</a></li>
     <li><%= link_to 'Sign up', new_user_registration_path %></li>
     <li><%= link_to 'Login', new_user_session_path %></li>
   </ul>
@@ -10,8 +10,9 @@
 <hr>
 
 <div class="jumbotron">
-  <h1>Super awesome marketing speak!</h1>
-  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <h1>Set your stuff free!</h1>
+  <p class="lead">Loan stuff, borrow stuff, give stuff away.</p><p class="lead">Get your stuff moving. Mark a start today.</p>
+  <%= link_to 'Log in now', new_user_session_path, :class => 'btn btn-large btn-primary' %>
   <%= link_to 'Sign up today', new_user_registration_path, :class => 'btn btn-large btn-success' %>
 </div>
 
