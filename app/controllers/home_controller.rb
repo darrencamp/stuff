@@ -2,6 +2,8 @@ class HomeController < ApplicationController
 
   before_filter :redirect_to_welcome
   
+  set_menu_item :home
+  
   def index
     if user_signed_in?
       @loans = Loan.where('returned_date is null')

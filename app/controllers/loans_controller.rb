@@ -1,6 +1,8 @@
 class LoansController < ApplicationController
   
   before_filter :authenticate_user!
+  
+  set_menu_item :loans
     
   def index
     @loans = Loan.where('returned_date is null')

@@ -1,11 +1,14 @@
 Stuff::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => :sessions, :registrations => :registrations}
   resources :loans
   resources :reminder
   resources :borrowing
   
-  resource :welcome, :only => :show
-
+#  resource :welcome, :only => :show
+  
+  match '/welcome' => 'welcome#show'
+  match '/about' => 'welcome#about'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

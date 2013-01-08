@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <div id="new-loan" class="new-loan">
+  <div id="new-loan" class="hero-unit" >
     <h2>Create a new loan</h2>
     <%= form_tag "/loans", :class => "form-inline" do %>
       <%= email_field :borrower, :email, :placeholder => "borrower's email address" %>
