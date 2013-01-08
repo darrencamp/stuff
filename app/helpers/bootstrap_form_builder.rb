@@ -24,7 +24,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     #   Still, I can see a reason to add more :type values here
     case options[:type]
       # SMELL space required at end of :class = 'string' to avoid trashing options[:class] if used   
-      when :large then options[:class] = 'btn btn-large btn-primary ' + options[:class].to_s # nil.to_s = ''   
+      when :large then options[:class] = 'btn btn-large btn-primary ' + options[:class].to_s # nil.to_s = '' 
+        
+      when :small then options[:class] = 'btn btn-small btn-primary ' + options[:class].to_s # nil.to_s = '' 
     end   
     # SMELL remember to remove :type and other spurious tags
 

@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,35 +15,15 @@
     <![endif]-->
     <%= yield(:head) %>
   </head>
-  <body>
-    <div id="wrap">
-      
-      <header class="navbar navbar-fixed-top">
-        <nav class="navbar-inner">
-          <div class="container">
-            <%= render 'layouts/navigation' %>
-          </div>
-        </nav>
-      </header>
-      
-      <div id="main" role="main">
-        <div class="container">
-          <div class="content">
-          
-             <div class="row">
-               <div class="span12">
-                 <%= render 'layouts/messages' %>
-                 <%= yield %>
-               </div>
-            </div>
-            <footer>
-            </footer>
-          </div>
-        </div> <!--! end of .container -->
-      </div> <!--! end of #main -->
-      <div id="push"></div>
+  <body style="padding-top: 0px;"><%# SMELL Inline CSS %>
+
+    <div class="container-narrow">
+      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
       <%= render 'layouts/footer' %>
-    </div><!-- end of #wrap -->
-    
+
+    </div> <!-- /container -->
+
   </body>
 </html>
