@@ -1,14 +1,14 @@
-<h2>Login</h2>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-signin" }) do |f| %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-vertical" }) do |f| %>
-
-  <%= f.email_field :email, :id => "in1" %>
-  <%= f.password_field :password, :id => "in2" %>
+  <h2 class="form-signin-heading">Login</h2>
+  <%= f.email_field :email, :id => "in1", :class => "input-block-level", :placeholder => "Email address", :label => false %>
+  <%= f.password_field :password, :id => "in2", :class => "input-block-level", :placeholder => "Password", :label => false %>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <%# SMELL shouldn't have to redeclare the label, should default to attribute name %>
+    <%= f.check_box :remember_me, :label => 'Remember me' %>
   <% end -%>
-  <%= f.submit "Login" %>
+  <%= f.submit "Login", :class => 'btn btn-large btn-primary' %>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

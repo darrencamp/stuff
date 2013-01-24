@@ -4,31 +4,37 @@
       <h3>Loans</h3>
     </div>
     <div class="loans">
-      <ul class="loan-item">
-        <% @loans.each do |l| %>
-          <li class="loan-item">
-            <div class="loan-details">
-              <p><%= l.borrower.email %> has <%= l.item %></p>
-              <p><%= time_ago_in_words(l.created_at)%> ago</p>
-            </div>
-            <span id="remove-loan">
-              <%= form_for(l, :html => {:method => 'delete'}) do |f| %>
-                <div>
-                  <%= f.submit "Return loan." %>
-                </div>
-              <% end %>
-            </span>
-            <span id="remind-loan">
-              <%= form_tag "/reminder" do %>
-                <div>
-                  <%= hidden_field_tag 'id', l.id %>
-                  <%= submit_tag "Remind" %>
-                </div>
-              <% end %>
-            </span>
-          </li>
+    <table class="table">
+      <thead>
+        <th>Borrower</th>
+        <th>Stuff</th>
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <% @loans.each do |loan| %>
+          <tr>
+            <td>
+              <%= loan.borrower.email %>
+              <p class="loan-subdetail"><%= time_ago_in_words(loan.created_at)%> ago</p>
+            </td>
+            <td><%= loan.item %></td>
+            <td>        
+              <span id="remove-loan">
+                <%= form_for(loan, :html => {:method => 'delete'}) do |f| %>
+                    <%= f.submit "Return", :class => "btn btn-mini btn-primary" %>
+                <% end %>
+              </span>
+              <span id="remind-loan">
+                <%= form_tag "/reminder" do %>
+                    <%= hidden_field_tag 'id', loan.id %>
+                    <%= submit_tag "Remind", :class => "btn btn-mini" %>
+                <% end %>
+              </span>
+            </td>
+          </tr>  
         <% end %>
-      </ul>
+      </tbody>    
+    </table>
     </div>
   </div>
 <% end %>

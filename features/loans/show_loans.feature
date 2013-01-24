@@ -32,20 +32,3 @@ Feature: Show a list of items on loan
         Then I should be signed in
         When I follow "Loans"
         Then I should see "me@me.com has Drill Press"
-
-      Scenario: I sign in and go to the borrowings page.
-        Given I am a user named "foo" with an email "user@test.com" and password "please"
-        Given the following loans exist
-            | user_id | item        | borrower_id |
-            | 1       | Drill Press | 1           |
-            | 1       | Fight Club  | 2           |
-            | 2       | Test        | 3           |
-        Given the following borrowers exist
-            | id | email                   |
-            | 1  | me@me.com               |
-            | 2  | darren@codingintent.com |
-            | 3  | user@test.com           |
-        When I sign in as "user@test.com/please"
-        Then I should be signed in
-        When I follow "Borrowing"
-        Then I should see "You have something"

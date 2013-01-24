@@ -1,22 +1,33 @@
-<%= link_to "Stuff", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to 'Loans', loans_path %>
-    </li>   
-    <li>
-      <%= link_to 'Hello '+current_user.name, edit_user_registration_path %>  
-    </li>
-    <li>
-      <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
-    </li>  
+<div class="masthead">
+  <ul class="nav nav-pills pull-right">
     
-  <% else %>
-    <li>
-      <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
-    <li>  
-      <%= link_to 'Login', new_user_session_path %>
-    </li>
-  <% end %>
-</ul>
+    <% if user_signed_in? %>
+      <li class="<%= menu_item_li_class(:home) %>"><a href="/">Home</a></li>
+    <% else %> 
+      <li class="<%= menu_item_li_class(:welcome) %>"><%= link_to 'Welcome', welcome_path %></li>
+    <% end %>
+      
+    <li class="<%= menu_item_li_class(:about) %>"><%= link_to 'About', about_path %></li>
+    
+    <% if user_signed_in? %>
+      <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Loans', loans_path %></li>   
+      <li class="<%= menu_item_li_class(:settings) %>">
+        <%= link_to 'Settings', edit_user_registration_path %>  
+      </li>
+      <li>
+        <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+      </li>  
+
+    <% else %>
+      <li class="<%= menu_item_li_class(:sign_up) %>">
+        <%= link_to 'Sign up', new_user_registration_path %>
+      </li>
+      <li class="<%= menu_item_li_class(:login) %>">  
+        <%= link_to 'Login', new_user_session_path %>
+        
+      </li>
+    <% end %>
+  </ul>
+
+<h3 class="muted">Stuff</h3>
+</div>

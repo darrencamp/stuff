@@ -1,28 +1,22 @@
 <% if user_signed_in? %>
-  <div id="new-loan" class="new-loan">
+  <div id="new-loan" class="hero-unit" >
     <h2>Create a new loan</h2>
     <%= form_tag "/loans", :class => "form-inline" do %>
-      <%= email_field :borrower, :email, :placeholder => "email address" %>
+      <%= email_field :borrower, :email, :placeholder => "borrower's email address" %>
       <%= text_field :item, :name, :placeholder => "item name" %>
-      <%= submit_tag "Create Loan", :class => "btn" %>
+      <%= submit_tag "Create Loan", :class => 'btn btn-primary' %>
     <% end %>
   </div>
-  <div class="content row top-margin">
-      <section id="loan-counter" class="span4 offset2 counter-container">
-        <%= link_to loans_path, {:id => "Loans"} do %>
-          <img src="http://placehold.it/350x150&amp;text=Loans" class="loans-image">
-          <div class="counter">
-            <p><%= @loans.count %></p>
-          </div>
-        <% end %>
-      </section>
-      <section id="borrowing-counter" class="span4 counter-container">
-        <%= link_to borrowing_index_path, {:id => "Borrowing"} do %>
-          <img src="http://placehold.it/350x150&amp;text=Borrowed" class="loans-image">
-          <div class="counter">
-            <p><%= @borrowing.count %></p>
-          </div>
-        <% end %>
-      </section>
-  </div>
+  
+  <div>
+    <h2>Recent loans</h2>
+    <table class="table">
+      <% @loans.each do |loan| %>
+        <tr>
+          <td><%= loan.borrower.email %></td>
+          <td><%= loan.item %></td>
+        </tr>  
+      <% end %>    
+    </table>
+  <div>    
 <% end %>
