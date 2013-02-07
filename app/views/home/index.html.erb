@@ -12,10 +12,7 @@
     <h2>Recent loans</h2>
     <table class="table">
       <% @loans.each do |loan| %>
-        <tr>
-          <td><%= loan.borrower.email %></td>
-          <td><%= loan.item %></td>
-        </tr>  
+        <%= render '/loans/shared/loan_item', :loan => loan %>
       <% end %>    
     </table>
   <div>    

@@ -12,26 +12,7 @@
       </thead>
       <tbody>
         <% @loans.each do |loan| %>
-          <tr>
-            <td>
-              <%= loan.borrower.email %>
-              <p class="loan-subdetail"><%= time_ago_in_words(loan.created_at)%> ago</p>
-            </td>
-            <td><%= loan.item %></td>
-            <td>        
-              <span id="remove-loan">
-                <%= form_for(loan, :html => {:method => 'delete'}) do |f| %>
-                    <%= f.submit "Return", :class => "btn btn-mini btn-primary" %>
-                <% end %>
-              </span>
-              <span id="remind-loan">
-                <%= form_tag "/reminder" do %>
-                    <%= hidden_field_tag 'id', loan.id %>
-                    <%= submit_tag "Remind", :class => "btn btn-mini" %>
-                <% end %>
-              </span>
-            </td>
-          </tr>  
+          <%= render '/loans/shared/loan_item', :loan => loan %>
         <% end %>
       </tbody>    
     </table>
