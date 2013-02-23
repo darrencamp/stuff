@@ -1,33 +1,61 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
+# SOURCE: https://gist.github.com/stevenharman/2321262
+
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara/rspec'
+require 'webmock/rspec'
+require 'factory_girl'
+require 'factory_girl_rails'
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  # == Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
-  config.mock_with :rspec
+  config.use_transactional_fixtures = false
+  # NOTE Doesn't appear to be a setting. Assume this was deprecated
+  #config.infer_base_class_for_anonymous_controllers = false
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  # NOTE: Not sure what these things do. Hints at helpers for specific operations, but no impl. 
+  #  Must either need to be coded, or exist in libraries somewhere [tom]
+  # config.include JsonSpec::Helpers
+  # config.include LoginHelper, type: :request
+  # config.include ActivitySpecHelper, type: :request
+  # config.include RoomSpecHelper, type: :request
+  # config.include AutocompleteSpecHelper, type: :request
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
-  config.use_transactional_fixtures = true
+  config.before :suite do
+    DatabaseCleaner.clean_with :truncation
+  end
 
-  # If true, the base class of anonymous controllers will be inferred
-  # automatically. This will be the default behavior in future versions of
-  # rspec-rails.
-  config.infer_base_class_for_anonymous_controllers = false
+  config.before type: :model do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+
+  # Request specs cannot use a transaction because Capybara runs in a
+  # separate thread with a different database connection.
+  config.before type: :request do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
+  end
+
+  # Reset so other non-request specs don't have to deal with slow truncation.
+  config.after type: :request  do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before do
+    WebMock.disable_net_connect!(:allow_localhost => true)
+    ActionMailer::Base.deliveries.clear
+  end
+
+  config.after do
+    Timecop.return
+    DatabaseCleaner.clean
+  end
 end
+
+Capybara.javascript_driver = :webkit
+Capybara.default_wait_time = 5
+Capybara.ignore_hidden_elements = false

@@ -31,7 +31,9 @@ gem 'jquery-rails'
 # gem 'ruby-debug'
 
 group :test, :development do
+  gem 'rspec'#, '~> 2.70'
   gem "rspec-rails"
+  gem "webmock"
   gem "factory_girl_rails"
   gem "pickle"
   gem "capybara"
