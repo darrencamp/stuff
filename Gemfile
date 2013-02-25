@@ -27,7 +27,9 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'
+  gem 'rvm-capistrano', '1.3.0.rc11' # SMELL tracking a release candidate - needed for new features 
 end
+
 # To use debugger
 # gem 'ruby-debug'
 
