@@ -1,7 +1,7 @@
 # NOTE Move require "bundler/capistrano" to end of file if using 'set :bundle_roles'  
 require "bundler/capistrano"
 
-load 'config/recipes/rvm'
+#load 'config/recipes/rvm'
 
 set :application, "stuff"
 
@@ -9,11 +9,16 @@ set :application, "stuff"
 default_run_options[:pty] = true  # Must be set for the password prompt
                                   # from git to work
 set :ssh_options, { :forward_agent => true }
+#set :ssh_user, 'tom'
+# ssh_options[:verbose] = :debug
+#ssh_options[:auth_methods] = %w(publickey)
+#ssh_options[:keys] = %w(~/.ssh/id_rsa)
 
 set :scm, "git"
 set :repository,  "https://github.com/darrencamp/stuff"
 set :branch, "develop" # TODO Change this 'master' when we start rolling production releases
 
+set :use_sudo, false
 set :user, "tom" # TODO Need to change this to a 'deploy' user or similar
 set :deploy_via, :remote_cache
 
@@ -28,9 +33,18 @@ role :app, "198.58.106.171"                          # This may be the same as y
 role :db,  "198.58.106.171", :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
-set :deploy_to, "/var/www/{application}"
+set :deploy_to, "/var/www/#{application}"
 
-#before "deploy:setup", "rvm:install_ruby"
+# SMELL dodgey town
+namespace :deploy do
+  desc "Create base application folder"
+  task :create_app_dir do
+    run "#{sudo} mkdir -p /var/www/#{application}"
+    run "#{sudo} chown -R tom /var/www/#{application}"
+  end
+end
+    
+before "deploy:setup", "deploy:create_app_dir"
 
 # namespace :deploy do
 #   desc "Install everything onto the server"

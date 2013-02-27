@@ -8,6 +8,6 @@ before 'deploy:setup', 'rvm:install_rvm'   # install RVM
 before 'deploy:setup', 'rvm:install_pkgs'  # install RVM packages before Ruby
 before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, or:
 before 'deploy:setup', 'rvm:create_gemset' # only create gemset
-#before 'deploy:setup', 'rvm:import_gemset' # import gemset from file
+before 'deploy:setup', 'rvm:import_gemset' # import gemset from file
 
 require "rvm/capistrano"
