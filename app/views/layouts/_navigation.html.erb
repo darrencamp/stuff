@@ -16,9 +16,9 @@
           <% end %>
           
           <li class="<%= menu_item_li_class(:about) %>"><%= link_to 'About', about_path %></li>
-
+          
           <% if user_signed_in? %>
-            <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Buckets', loans_path %></li>
+            <!-- <li class="<%#= menu_item_li_class(:loans) %>" ><%#= link_to 'Buckets', loans_path %></li> -->
             <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Loans', loans_path %></li>   
             <li class="<%= menu_item_li_class(:settings) %>">
               <%= link_to 'Settings', edit_user_registration_path %>  
@@ -37,7 +37,6 @@
             </li>
              
           <% end %>
-          <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Help', loans_path %></li>
           <!-- <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -58,7 +57,7 @@
           
         </form>
         <% end %>
-        <button type="submit" class="btn ">Sign in</button>
+        <!-- <button type="submit" class="btn ">Sign in</button> -->
       </div><!--/.nav-collapse -->
     </div>
   </div>
