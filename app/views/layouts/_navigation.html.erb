@@ -1,33 +1,68 @@
-<div class="masthead">
-  <ul class="nav nav-pills pull-right">
-    
-    <% if user_signed_in? %>
-      <li class="<%= menu_item_li_class(:home) %>"><a href="/">Home</a></li>
-    <% else %> 
-      <li class="<%= menu_item_li_class(:welcome) %>"><%= link_to 'Welcome', welcome_path %></li>
-    <% end %>
-      
-    <li class="<%= menu_item_li_class(:about) %>"><%= link_to 'About', about_path %></li>
-    
-    <% if user_signed_in? %>
-      <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Loans', loans_path %></li>   
-      <li class="<%= menu_item_li_class(:settings) %>">
-        <%= link_to 'Settings', edit_user_registration_path %>  
-      </li>
-      <li>
-        <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
-      </li>  
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="/">Stuff</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <% if user_signed_in? %>
+            <li class="<%= menu_item_li_class(:home) %>"><a href="/">Home</a></li>
+          <% else %> 
+            <li class="<%= menu_item_li_class(:welcome) %>"><%= link_to 'Welcome', welcome_path %></li>
+          <% end %>
+          
+          <li class="<%= menu_item_li_class(:about) %>"><%= link_to 'About', about_path %></li>
+          
+          <% if user_signed_in? %>
+            <!-- <li class="<%#= menu_item_li_class(:loans) %>" ><%#= link_to 'Buckets', loans_path %></li> -->
+            <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Loans', loans_path %></li>   
+            <li class="<%= menu_item_li_class(:settings) %>">
+              <%= link_to 'Settings', edit_user_registration_path %>  
+            </li>
+            <li>
+              <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+            </li>  
 
-    <% else %>
-      <li class="<%= menu_item_li_class(:sign_up) %>">
-        <%= link_to 'Sign up', new_user_registration_path %>
-      </li>
-      <li class="<%= menu_item_li_class(:login) %>">  
-        <%= link_to 'Login', new_user_session_path %>
-        
-      </li>
-    <% end %>
-  </ul>
+          <% else %>
+            <li class="<%= menu_item_li_class(:sign_up) %>">
+              <%= link_to 'Sign up', new_user_registration_path %>
+            </li>
+            <li class="<%= menu_item_li_class(:login) %>">  
+              <%= link_to 'Login', new_user_session_path %>
 
-<h3 class="muted">Stuff</h3>
+            </li>
+             
+          <% end %>
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li class="nav-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li> -->
+        </ul>
+        <% if user_signed_in? %>
+        <form class="navbar-form pull-right">
+          <input class="span2" type="text" placeholder="Search">
+          <!-- <input class="span2" type="password" placeholder="Password"> -->
+          
+        </form>
+        <% end %>
+        <!-- <button type="submit" class="btn ">Sign in</button> -->
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
 </div>
+
+
+
+
