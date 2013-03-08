@@ -1,6 +1,6 @@
-class LoansController < ApplicationController
+class LoansController < Base::AuthenticatedController
   
-  before_filter :authenticate_user!
+ # before_filter :authenticate_user!
   
   set_menu_item :loans
     

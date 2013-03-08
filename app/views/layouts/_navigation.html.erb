@@ -19,13 +19,12 @@
           
           <% if user_signed_in? %>
             <!-- <li class="<%#= menu_item_li_class(:loans) %>" ><%#= link_to 'Buckets', loans_path %></li> -->
+            <li class="<%= menu_item_li_class(:items) %>" ><%= link_to 'Items', items_path %></li>    
             <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Loans', loans_path %></li>   
             <li class="<%= menu_item_li_class(:settings) %>">
               <%= link_to 'Settings', edit_user_registration_path %>  
             </li>
-            <li>
-              <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
-            </li>  
+           
 
           <% else %>
             <li class="<%= menu_item_li_class(:sign_up) %>">
@@ -50,13 +49,21 @@
             </ul>
           </li> -->
         </ul>
+
         <% if user_signed_in? %>
         <form class="navbar-form pull-right">
           <input class="span2" type="text" placeholder="Search">
           <!-- <input class="span2" type="password" placeholder="Password"> -->
           
         </form>
+        
+        <ul class="nav pull-right">
+         <li>
+            <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+          </li>
+        </ul>
         <% end %>
+        
         <!-- <button type="submit" class="btn ">Sign in</button> -->
       </div><!--/.nav-collapse -->
     </div>

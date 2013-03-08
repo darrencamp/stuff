@@ -1,0 +1,27 @@
+<h1>Listing items</h1>
+
+<% if @items.empty? %>
+<h2>Hey, it looks like you're new here</h2>
+
+<% else %>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @items.each do |item| %>
+  <tr>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% end %>
+
+<%= link_to 'New Item', new_item_path %>

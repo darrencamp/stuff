@@ -7,4 +7,5 @@ class WelcomeController < ApplicationController
   def about
     set_menu_item :about  
   end  
+  
 end    

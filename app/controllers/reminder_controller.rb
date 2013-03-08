@@ -1,4 +1,4 @@
-class ReminderController < ApplicationController
+class ReminderController < Base::AuthenticatedController
   def show
   end
 
