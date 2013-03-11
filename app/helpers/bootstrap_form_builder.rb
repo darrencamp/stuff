@@ -2,7 +2,6 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   
   def text_field(attribute, options={})
     label_content = options[:label] || options
-
     bootstrap_control(attribute, label_content, options) { super }     
   end
   
@@ -51,13 +50,13 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     
   private
   
-  # options[:label] => false prevents the label from displaying
+  # NOTE options[:label] => false stops the label displaying
   def bootstrap_control(attribute, label_content, options={})
     label_tag = options[:label] == false ? "".html_safe : label(attribute, label_content, {:class => 'control-label'}) 
 
-    @template.content_tag(:div, :class => 'control-group') do
+    @template.content_tag(:div, :class => 'xcontrol-group') do
       label_tag + 
-      @template.content_tag(:div, :class => 'controls') do
+      @template.content_tag(:div, :class => 'xcontrols') do
         yield
       end
     end  

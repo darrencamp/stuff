@@ -3,7 +3,7 @@ class CreateItems < ActiveRecord::Migration
     create_table :items do |t|
       t.string :name
       t.string :description
-      t.integer :owner_id
+      t.references :user
       t.timestamps
     end
   end

@@ -1,4 +1,4 @@
-<%= form_for(@item) do |f| %>
+<%= form_for(@item, :html => {:class => "form-inline"}) do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -9,9 +9,10 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% end %>
+  
+  <%= f.text_field :name, :placeholder => "Name" %>
+  <%= f.text_field :description, :placeholder => "Description" %>
+  <%= f.submit %>
 <% end %>

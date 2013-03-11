@@ -1,3 +1,4 @@
 class Item < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :name, :description
+  belongs_to :user
 end

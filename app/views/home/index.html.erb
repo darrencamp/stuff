@@ -1,19 +1,17 @@
-<% if user_signed_in? %>
-  <div id="new-loan" class="hero-unit" >
-    <h2>Create a new loan</h2>
-    <%= form_tag "/loans", :class => "form-inline" do %>
-      <%= email_field :borrower, :email, :placeholder => "borrower's email address" %>
-      <%= text_field :item, :name, :placeholder => "item name" %>
-      <%= submit_tag "Create Loan", :class => 'btn btn-primary' %>
-    <% end %>
-  </div>
-  
-  <div>
-    <h2>Recent loans</h2>
-    <table class="table">
-      <% @loans.each do |loan| %>
-        <%= render '/loans/shared/loan_item', :loan => loan %>
-      <% end %>    
-    </table>
-  <div>    
-<% end %>
+<div id="new-loan" class="hero-unit" >
+  <h2>Create a new loan</h2>
+  <%= form_tag "/loans", :class => "form-inline" do %>
+    <%= email_field :borrower, :email, :placeholder => "borrower's email address" %>
+    <%= text_field :item, :name, :placeholder => "item name" %>
+    <%= submit_tag "Create Loan", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<div>
+  <h2>Recent loans</h2>
+  <table class="table">
+    <% @recent_loans.each do |loan| %>
+      <%= render '/loans/shared/loan_item', :loan => loan %>
+    <% end %>    
+  </table>
+<div>    

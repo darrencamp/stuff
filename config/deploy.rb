@@ -47,7 +47,7 @@ end
 before "deploy:setup", "deploy:create_app_dir"
 
 # namespace :deploy do
-#   desc "Install everything onto the server"
+#   desc "Install everyitem onto the server"
 #   task :install do
 #     run "#{sudo} apt-get -y update"
 # 

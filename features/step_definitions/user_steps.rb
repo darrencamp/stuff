@@ -11,6 +11,15 @@ Given /^I am a user named "([^"]*)" with an email "([^"]*)" and password "([^"]*
   u.confirm!
 end
 
+Given /^I am a new user$/ do
+  @new_user = FactoryGirl.create(:user)
+end
+
+When /I sign in$/ do
+  # SMELL depdendent on setting in factory
+  step %{I sign in as "#{@new_user.email}/changeme"}  
+end  
+
 Then /^I should be already signed in$/ do
   step %{I should see "Logout"}
 end
@@ -110,3 +119,4 @@ end
 When /^I follow "([^"]*)"$/ do |text|
   click_link text
 end
+

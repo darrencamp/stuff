@@ -1,12 +1,19 @@
-class ItemsController < Base::AuthenticatedController
+class ItemsController < ApplicationController
   
-  before_filter :set_menu_item_to_items
+  set_menu_item :items
   
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
-
+    
+    @item = Item.new # NOTE Used to create item from index page
+    
+    # NOTE Plan here is to have a variety of queries that can be called (e.g. search by name)
+    @items = case params[:query]
+      when nil 
+        Item.order('created_at DESC').all
+      end    
+      
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -16,7 +23,7 @@ class ItemsController < Base::AuthenticatedController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +34,7 @@ class ItemsController < Base::AuthenticatedController
   # GET /items/new
   # GET /items/new.json
   def new
-    @item = Item.new
+    @item = Item.new 
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +51,7 @@ class ItemsController < Base::AuthenticatedController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
+    @item.user = current_user # Not accessbile attribute
 
     respond_to do |format|
       if @item.save
@@ -59,7 +67,7 @@ class ItemsController < Base::AuthenticatedController
   # PUT /items/1
   # PUT /items/1.json
   def update
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -75,7 +83,7 @@ class ItemsController < Base::AuthenticatedController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
     @item.destroy
 
     respond_to do |format|
@@ -83,10 +91,4 @@ class ItemsController < Base::AuthenticatedController
       format.json { head :no_content }
     end
   end
-  
-  private
-  
-  def set_menu_item_to_items
-    set_menu_item :items    
-  end  
 end

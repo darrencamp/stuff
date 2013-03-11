@@ -1,9 +1,9 @@
 Stuff::Application.routes.draw do
-  resources :items
-
 
   devise_for :users, :controllers => {:sessions => :sessions, :registrations => :registrations}
+
   resources :loans
+  resources :items
   resources :reminder
   resources :borrowing
   

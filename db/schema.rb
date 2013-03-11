@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308130154) do
+ActiveRecord::Schema.define(:version => 20130311011101) do
 
   create_table "borrowers", :force => true do |t|
     t.string "email"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20130308130154) do
   create_table "items", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

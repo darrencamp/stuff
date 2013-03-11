@@ -2,12 +2,15 @@ class HomeController < Base::AuthenticatedController
 
   before_filter :redirect_to_welcome
   
+  autocomplete :borrower, :name
+  
   set_menu_item :home
   
   def index
-    @loans = Loan.where('returned_date is null')
-    @loans.where('user_id = ?', current_user.id)
-    @loans.all
+    @recent_loans = Loan.where('returned_date is null').where('user_id = ?', current_user.id).order('created_at DESC')
+    # @loans = Loan.where('returned_date is null')
+    # @loans.where('user_id = ?', current_user.id)
+    # @loans.all
 
     @borrowing = Borrower.where('email = ?', current_user.email)
     @borrowing.all

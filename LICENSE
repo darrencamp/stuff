@@ -22,7 +22,7 @@ price.  Our General Public Licenses are designed to make sure that you
 have the freedom to distribute copies of free software (and charge for
 them if you wish), that you receive source code or can get it if you
 want it, that you can change the software or use pieces of it in new
-free programs, and that you know you can do these things.
+free programs, and that you know you can do these items.
 
   Developers that use our General Public Licenses protect your rights
 with two steps: (1) assert copyright on the software, and (2) offer
@@ -77,7 +77,7 @@ earlier work or a work "based on" the earlier work.
   A "covered work" means either the unmodified Program or a work based
 on the Program.
 
-  To "propagate" a work means to do anything with it that, without
+  To "propagate" a work means to do anyitem with it that, without
 permission, would make you directly or secondarily liable for
 infringement under applicable copyright law, except executing it on a
 computer or modifying a private copy.  Propagation includes copying,
@@ -108,7 +108,7 @@ standard defined by a recognized standards body, or, in the case of
 interfaces specified for a particular programming language, one that
 is widely used among developers working in that language.
 
-  The "System Libraries" of an executable work include anything, other
+  The "System Libraries" of an executable work include anyitem, other
 than the work as a whole, that (a) is included in the normal form of
 packaging a Major Component, but which is not part of that Major
 Component, and (b) serves only to enable use of the work with that
@@ -132,7 +132,7 @@ linked subprograms that the work is specifically designed to require,
 such as by intimate data communication or control flow between those
 subprograms and other parts of the work.
 
-  The Corresponding Source need not include anything that users
+  The Corresponding Source need not include anyitem that users
 can regenerate automatically from other parts of the Corresponding
 Source.
 
@@ -284,7 +284,7 @@ included in conveying the object code work.
 
   A "User Product" is either (1) a "consumer product", which means any
 tangible personal property which is normally used for personal, family,
-or household purposes, or (2) anything designed or sold for incorporation
+or household purposes, or (2) anyitem designed or sold for incorporation
 into a dwelling.  In determining whether a product is a consumer product,
 doubtful cases shall be resolved in favor of coverage.  For a particular
 product received by a particular user, "normally used" refers to a
@@ -426,7 +426,7 @@ material under section 10.
 run a copy of the Program.  Ancillary propagation of a covered work
 occurring solely as a consequence of using peer-to-peer transmission
 to receive a copy likewise does not require acceptance.  However,
-nothing other than this License grants you permission to propagate or
+noitem other than this License grants you permission to propagate or
 modify any covered work.  These actions infringe copyright if you do
 not accept this License.  Therefore, by modifying or propagating a
 covered work, you indicate your acceptance of this License to do so.
@@ -521,7 +521,7 @@ for and in connection with specific products or compilations that
 contain the covered work, unless you entered into that arrangement,
 or that patent license was granted, prior to 28 March 2007.
 
-  Nothing in this License shall be construed as excluding or limiting
+  Noitem in this License shall be construed as excluding or limiting
 any implied license or other defenses to infringement that may
 otherwise be available to you under applicable patent law.
 
