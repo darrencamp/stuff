@@ -47,6 +47,17 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     label_content = options[:label] || options
     bootstrap_control(method, label_content, options) { super }    
   end
+  
+  # def autocomplete_field(method, options = {})
+  #   #raise 'got here'
+  #   label_content = options[:label] || options
+  #   bootstrap_control(method, label_content, options) { super }    
+  # end
+  
+  def type_ahead_field(method, options = {})
+    label_content = options[:label] || options
+    @template.content_tag(:input) do    
+  end  
     
   private
   

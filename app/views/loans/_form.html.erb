@@ -1,4 +1,4 @@
-<% form_for(@loan, :html => {:class => "form-inline"}) do |f| %>
+<%= form_for(@loan, :html => {:class => "form-inline"}) do |f| %>
   <% if @loan.errors.any? %>
     <div id="error_explaination">
       <h2><%= /#{pluralize(@loan.errors.count, "error")} stopped this loan from being saved:/ %></h2>
@@ -9,11 +9,18 @@
       </ul>
     </div>
   <% end %>
+  
   <div>
     <%= email_field :borrower, :email, :placeholder => "email address" %>
   </div>
+  <div><input id="foo" type="text" ></div>
+  
+  <script>
+  $('#foo').typeahead({source: ['1','2','3']});
+   </script>
   <div>
-    <%= f.text_field :item %>
+    
+    <%= f.autocomplete_field :item_name, autocomplete_item_name_loans_path, :placeholder => "item" %>
   </div>
   <div class="actions">
     <%= f.submit %>

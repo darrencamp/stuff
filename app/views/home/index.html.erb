@@ -2,7 +2,8 @@
   <h2>Create a new loan</h2>
   <%= form_tag "/loans", :class => "form-inline" do %>
     <%= email_field :borrower, :email, :placeholder => "borrower's email address" %>
-    <%= text_field :item, :name, :placeholder => "item name" %>
+    
+    <%#= text_field :item, :name, :placeholder => "item name" %>
     <%= submit_tag "Create Loan", :class => 'btn btn-primary' %>
   <% end %>
 </div>
