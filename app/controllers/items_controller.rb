@@ -12,12 +12,16 @@ class ItemsController < ApplicationController
     @items = case params[:query]
       when nil 
         Item.order('created_at DESC').all
+      else
+        Item.order('created_at DESC').all # SMELL need to actually filter by query    
       end    
       
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items }
+      format.json { render json: @items.map(&:name) }
     end
+    
+    puts @items.map(&:name).to_json
   end
 
   # GET /items/1

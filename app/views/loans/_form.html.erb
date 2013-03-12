@@ -11,12 +11,20 @@
   <% end %>
   
   <div>
-    <%= email_field :borrower, :email, :placeholder => "email address" %>
+    <%= email_field :borrower, :email, :placeholder => "email address"  %>
   </div>
-  <div><input id="foo" type="text" ></div>
+  <div><input id="foo" type="text" autocomplete="off" ></div>
   
+
   <script>
-  $('#foo').typeahead({source: ['1','2','3']});
+  $('#foo').typeahead({
+      source: function (query, process) {
+          return $.get('/items.json', { query: query }, function (data) {
+          //   alert(data);
+            return process(data);
+          });
+      }
+  });
    </script>
   <div>
     

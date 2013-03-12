@@ -54,10 +54,10 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   #   bootstrap_control(method, label_content, options) { super }    
   # end
   
-  def type_ahead_field(method, options = {})
-    label_content = options[:label] || options
-    @template.content_tag(:input) do    
-  end  
+  # def type_ahead_field(method, options = {})
+  #   label_content = options[:label] || options
+  #   @template.content_tag(:input) do    
+  # end  
     
   private
   
