@@ -1,21 +1,21 @@
-class HomeController < ApplicationController
+class HomeController < Base::AuthenticatedController
 
   before_filter :redirect_to_welcome
-  
+
   set_menu_item :home
   
   def index
-    if user_signed_in?
-      @loans = Loan.where('returned_date is null')
-      @loans.where('user_id = ?', current_user.id)
-      @loans.all
+    @recent_loans = current_user.loans.where('returned_date is null').order('created_at DESC')
 
-      @borrowing = Borrower.where('email = ?', current_user.email)
-      @borrowing.all
-    end
+    # SMELL this really requires a social connection between current user and loans from
+    # another user
+    # @borrowing = Borrower.where('email = ?', current_user.email)
+    # @borrowing.all
+    
+    flash[:notice] = "You must be new here" if @recent_loans.empty?
   end  
   
   def redirect_to_welcome
-    redirect_to welcome_path, :flash => flash if !user_signed_in?   
+    redirect_to welcome_path, :flash => flash unless user_signed_in?   
   end  
 end

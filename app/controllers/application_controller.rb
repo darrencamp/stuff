@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   
   class << self; attr_accessor :menu_item; end
 
+  protected
+  
   def self.set_menu_item(menu_item)
     self.menu_item = menu_item   
   end  

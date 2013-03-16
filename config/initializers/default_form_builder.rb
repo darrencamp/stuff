@@ -1,3 +1,5 @@
+# Overide the default form builder, apply styles in BootstrapFormBuilder
+ 
 module ActionView
   module Helpers
     module FormHelper

@@ -1,11 +1,13 @@
-class LoansController < ApplicationController
-  
-  before_filter :authenticate_user!
-  
+class LoansController < Base::AuthenticatedController
+   
   set_menu_item :loans
+  
+  autocomplete :item, :name
     
   def index
-    @loans = Loan.where('returned_date is null')
+    @loan = Loan.new # NOTE Used to create item from index page
+    
+    @loans = current_user.loans.where('returned_date is null')
     @loans.where('user_id = ?', current_user.id)
     @loans.all
   end
@@ -22,14 +24,9 @@ class LoansController < ApplicationController
     @loan = Loan.new
   end
   
-  def create
-    @loan = Loan.new(params[:loan])
-    @loan.item = params[:item][:name]
-    @loan.created_at = DateTime.now
-    @loan.user_id = current_user.id
-    @borrower = Borrower.find_by_email(params[:borrower][:email])
-    @borrower = Borrower.new(params[:borrower]) unless @borrower
-    @loan.borrower = @borrower
+  def create    
+    @loan = current_user.loans.new # NOTE Pick up current user
+    @loan.update_attributes(:borrower_attributes => params[:borrower], :item_attributes => params[:item])
     
     respond_to do |format|
       if @loan.save
@@ -43,7 +40,9 @@ class LoansController < ApplicationController
   end
   
   def destroy
-    @loan = Loan.find(params[:id])
+    # SMELL   Is this really what is meant by the verb "DELETE". I kinda get it, but 
+    #         it feels that 'returned' should be a status of a loan 
+    @loan = current_users.loans.find(params[:id])
     @loan.returned_date = DateTime.now
     
     respond_to do |format|

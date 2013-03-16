@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   
   validates_presence_of :name
   validates_uniqueness_of :email, :case_sensitive => false
+  
+  has_many :items
+  has_many :loans
+  has_many :borrowers
 end

@@ -8,9 +8,8 @@ gem 'devise-encryptable'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
 gem 'json'
-gem 'modernizr-rails'
+
 
 group :assets do
 	gem 'sass-rails', '~> 3.2'
@@ -19,7 +18,10 @@ group :assets do
 	gem 'uglifier'
 end
 
+# UI related - may belong in assets?
+gem 'modernizr-rails'
 gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
 
 # Use unicorn as the web server
 # gem 'unicorn'

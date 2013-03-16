@@ -11,20 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120406060118) do
+ActiveRecord::Schema.define(:version => 20130316042157) do
 
   create_table "borrowers", :force => true do |t|
-    t.string "email"
-    t.string "name"
+    t.string   "email"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "loans", :force => true do |t|
-    t.string   "item"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "user_id"
     t.datetime "returned_date"
     t.integer  "borrower_id"
+    t.integer  "item_id"
   end
 
   create_table "users", :force => true do |t|

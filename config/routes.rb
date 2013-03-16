@@ -1,8 +1,15 @@
 Stuff::Application.routes.draw do
+
   devise_for :users, :controllers => {:sessions => :sessions, :registrations => :registrations}
-  resources :loans
+
+  resources :loans do
+    get :autocomplete_item_name, :on => :collection
+  end  
+  
+  resources :items
   resources :reminder
   resources :borrowing
+  resources :borrowers
   
 #  resource :welcome, :only => :show
   

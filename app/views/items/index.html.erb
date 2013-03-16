@@ -1,0 +1,28 @@
+<h1>Listing items</h1>
+
+<div id="new-item" class="hero-unit" >
+  <h2>Create a new item</h2>
+  <%= render 'form' %>
+</div>    
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th colspan=3>Actions</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.name %></td>
+    <td><%= item.description %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item', new_item_path %>

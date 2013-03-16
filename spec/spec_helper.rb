@@ -16,7 +16,7 @@ RSpec.configure do |config|
   # NOTE Doesn't appear to be a setting. Assume this was deprecated
   #config.infer_base_class_for_anonymous_controllers = false
 
-  # NOTE: Not sure what these things do. Hints at helpers for specific operations, but no impl. 
+  # NOTE: Not sure what these items do. Hints at helpers for specific operations, but no impl. 
   #  Must either need to be coded, or exist in libraries somewhere [tom]
   # config.include JsonSpec::Helpers
   # config.include LoginHelper, type: :request

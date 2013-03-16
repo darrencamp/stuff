@@ -1,4 +1,4 @@
-<% form_for(@loan) do |f| %>
+<%= form_for(@loan, :html => {:class => "form-inline"}) do |f| %>
   <% if @loan.errors.any? %>
     <div id="error_explaination">
       <h2><%= /#{pluralize(@loan.errors.count, "error")} stopped this loan from being saved:/ %></h2>
@@ -9,11 +9,14 @@
       </ul>
     </div>
   <% end %>
+ 
+  <%= fields_for @loan.build_borrower do |borrower_fields| %>
+    <%= borrower_fields.typeahead_email_field :email, :placeholder => "email address", :source => '/borrowers.json', :display_field => 'email'  %>
+  <% end %>  
   <div>
-    <%= email_field :borrower, :email, :placeholder => "email address" %>
-  </div>
-  <div>
-    <%= f.text_field :item %>
+    <%= fields_for @loan.build_item do |item_fields| %>
+      <%= item_fields.typeahead_field :name, :placeholder => "item name", :source => '/items.json'  %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>
