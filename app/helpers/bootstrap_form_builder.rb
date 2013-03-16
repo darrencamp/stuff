@@ -21,7 +21,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     
     # SMELL I'm just being slack here, but I'm avoiding a check for nil.
     #   Still, I can see a reason to add more :type values here
-    case options[:type]
+    case options.delete(:button_type)
       # SMELL space required at end of :class = 'string' to avoid trashing options[:class] if used   
       when :large then options[:class] = 'btn btn-large btn-primary ' + options[:class].to_s # nil.to_s = '' 
         
@@ -31,8 +31,8 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
     button_class = options[:class] ||= 'btn' # SMELL repeated 'btn' class from above
     options.merge!(:class => button_class)
-    @template.content_tag(:div, :class => 'control-group') do
-      @template.content_tag(:div, :class => 'controls') do   
+    @template.content_tag(:div, :class => 'xcontrol-group') do
+      @template.content_tag(:div, :class => 'xcontrols') do   
         super
       end
     end     
@@ -77,6 +77,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
         label(method, label_content, {:class => 'control-label'}) 
       end
         
+
     #NOTE Commenting out the control classes so we don't have fat forms. See #BUG note above    
     @template.content_tag(:div, :class => 'xcontrol-group') do
       label_tag + 
