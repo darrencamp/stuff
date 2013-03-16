@@ -1,9 +1,9 @@
 <tr>
   <td>
-    <%= loan.borrower.email if loan.borrower %>
+    <%= loan.borrower_name if loan.borrower %>
     <p class="loan-subdetail"><%= time_ago_in_words(loan.created_at)%> ago</p>
   </td>
-  <td><%= loan.item %></td>
+  <td><%= loan.item_name %></td>
   <td>        
     <span id="remove-loan">
       <%= form_for(loan, :html => {:method => 'delete'}) do |f| %>

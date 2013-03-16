@@ -48,24 +48,22 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     bootstrap_control(method, label_content, options) { super }    
   end
   
-  def typeahead_field(method, options = {})
-    text_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source] ))
+  def typeahead_text_field(method, options = {})
+    text_field method, merge_typeahead_options(options)   
   end
     
   def typeahead_email_field(method, options = {})  
-    email_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source], :'data-display-field' => options[:display_field] || 'name' ))  
+    email_field method, merge_typeahead_options(options)   
   end    
-    # SMELL use data- fields to set the url, etc??
-    # 
-    # label_content = options[:label] || options
-    # content = @template.content_tag(:input, nil, :type => "text", :autocomplete => "off")
-    # content += @template.content_tag(:input, nil, :type => "hidden")
-    # content
-    
-    # <input class="typeahead" id="item_name" name="item[name]" type="text" autocomplete="off" data-source="/items.json" data-update-id="#item_id" >
 
-    
   private
+  
+  def merge_typeahead_options(options)
+    options.merge(
+      :class => 'typeahead', :autocomplete => 'off', 
+      :'data-source' => options[:source], :'data-display-field' => options[:display_field] 
+    )  
+  end  
   
   #NOTE options[:label] => false stops the label displaying
   #TODO #BUG  The way these controls get setup is wrong. You can't do inline forms if you wrap      

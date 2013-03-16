@@ -15,7 +15,7 @@
   <% end %>  
   <div>
     <%= fields_for @loan.build_item do |item_fields| %>
-      <%= item_fields.typeahead_field :name, :placeholder => "item name", :source => '/items.json'  %>
+      <%= item_fields.typeahead_text_field :name, :placeholder => "item name", :source => '/items.json', :display_field => 'name'    %>
     <% end %>
   </div>
   <div class="actions">
