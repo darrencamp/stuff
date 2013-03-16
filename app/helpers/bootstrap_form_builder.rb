@@ -1,18 +1,18 @@
 class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   
-  def text_field(attribute, options={})
+  def text_field(method, options={})
     label_content = options[:label] || options
-    bootstrap_control(attribute, label_content, options) { super }     
+    bootstrap_control(method, label_content, options) { super }     
   end
   
-  def password_field(attribute, options={})
+  def password_field(method, options={})
     label_content = options[:label] || options
-    bootstrap_control(attribute, label_content, options) { super }     
+    bootstrap_control(method, label_content, options) { super }     
   end
   
-  def email_field(attribute, options={})
+  def email_field(method, options = {})
     label_content = options[:label] || options
-    bootstrap_control(attribute, label_content, options) { super }     
+    bootstrap_control(method, label_content, options) { super }     
   end
   
   def submit(value=nil, options={})
@@ -48,23 +48,38 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     bootstrap_control(method, label_content, options) { super }    
   end
   
-  # def autocomplete_field(method, options = {})
-  #   #raise 'got here'
-  #   label_content = options[:label] || options
-  #   bootstrap_control(method, label_content, options) { super }    
-  # end
-  
-  # def type_ahead_field(method, options = {})
-  #   label_content = options[:label] || options
-  #   @template.content_tag(:input) do    
-  # end  
+  def typeahead_field(method, options = {})
+    text_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source] ))
+  end
+    
+  def typeahead_email_field  
+    email_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source] ))  
+  end    
+    # SMELL use data- fields to set the url, etc??
+    # 
+    # label_content = options[:label] || options
+    # content = @template.content_tag(:input, nil, :type => "text", :autocomplete => "off")
+    # content += @template.content_tag(:input, nil, :type => "hidden")
+    # content
+    
+    # <input class="typeahead" id="item_name" name="item[name]" type="text" autocomplete="off" data-source="/items.json" data-update-id="#item_id" >
+
     
   private
   
-  # NOTE options[:label] => false stops the label displaying
-  def bootstrap_control(attribute, label_content, options={})
-    label_tag = options[:label] == false ? "".html_safe : label(attribute, label_content, {:class => 'control-label'}) 
-
+  #NOTE options[:label] => false stops the label displaying
+  #TODO #BUG  The way these controls get setup is wrong. You can't do inline forms if you wrap      
+  #           things like this.  
+  def bootstrap_control(method, label_content, options={})
+    # NOTE This used to be a ternary operator. Is it easier to read like this? It still feels clunky.
+    
+    label_tag = if options[:label] == false 
+        "".html_safe 
+      else
+        label(method, label_content, {:class => 'control-label'}) 
+      end
+        
+    #NOTE Commenting out the control classes so we don't have fat forms. See #BUG note above    
     @template.content_tag(:div, :class => 'xcontrol-group') do
       label_tag + 
       @template.content_tag(:div, :class => 'xcontrols') do
@@ -73,8 +88,8 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     end  
   end    
   
-  def bootstrap_checkbox(attribute, label_content, options={})
-    label(attribute, label_content, {:class => 'checkbox control-label'}) do
+  def bootstrap_checkbox(method, label_content, options={})
+    label(method, label_content, {:class => 'checkbox control-label'}) do
       yield + options[:label] # Adds the label text into the containing <label> tag
     end
   end    

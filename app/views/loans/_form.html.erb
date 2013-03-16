@@ -9,26 +9,14 @@
       </ul>
     </div>
   <% end %>
-  
+ 
+  <%= fields_for @loan.build_borrower do |borrower_fields| %>
+    <%= borrower_fields.typeahead_email_field :email, :placeholder => "email address", :source => '/borrowers.json'  %>
+  <% end %>  
   <div>
-    <%= email_field :borrower, :email, :placeholder => "email address"  %>
-  </div>
-  <div><input id="foo" type="text" autocomplete="off" ></div>
-  
-
-  <script>
-  $('#foo').typeahead({
-      source: function (query, process) {
-          return $.get('/items.json', { query: query }, function (data) {
-          //   alert(data);
-            return process(data);
-          });
-      }
-  });
-   </script>
-  <div>
-    
-    <%= f.autocomplete_field :item_name, autocomplete_item_name_loans_path, :placeholder => "item" %>
+    <%= fields_for @loan.build_item do |item_fields| %>
+      <%= item_fields.typeahead_field :name, :placeholder => "item name", :source => '/items.json'  %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

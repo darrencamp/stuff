@@ -1,16 +1,18 @@
 class HomeController < Base::AuthenticatedController
 
   before_filter :redirect_to_welcome
-  
-  autocomplete :borrower, :name
-  
+
   set_menu_item :home
   
   def index
-    @recent_loans = Loan.where('returned_date is null').where('user_id = ?', current_user.id).order('created_at DESC')
+    @recent_loans = current_user.loans.where('returned_date is null').order('created_at DESC')
 
-    @borrowing = Borrower.where('email = ?', current_user.email)
-    @borrowing.all
+    # SMELL this really requires a social connection between current user and loans from
+    # another user
+    # @borrowing = Borrower.where('email = ?', current_user.email)
+    # @borrowing.all
+    
+    flash[:notice] = "You must be new here" if @recent_loans.empty?
   end  
   
   def redirect_to_welcome

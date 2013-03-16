@@ -7,8 +7,6 @@
 //= require modernizr
 //= require jquery
 //= require jquery_ujs
-
-//= require autocomplete-rails
+//= requre typeahead
 //= require bootstrap
-//= require jquery-ui
 //= require_tree .

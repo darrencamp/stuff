@@ -11,17 +11,20 @@ class ItemsController < ApplicationController
     # NOTE Plan here is to have a variety of queries that can be called (e.g. search by name)
     @items = case params[:query]
       when nil 
-        Item.order('created_at DESC').all
+        current_user.items.order('created_at DESC').all # SMELL this could get expensive. Paginate?
       else
-        Item.order('created_at DESC').all # SMELL need to actually filter by query    
-      end    
+        items = Item.arel_table
+        current_user.items.where(items[:name].matches("%#{params[:query]}%")).order('name').all
+      end  
+      
+        
       
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items.map(&:name) }
+     # format.json { render json: @items.map(&:name) }
+      format.json { render json: @items }
     end
-    
-    puts @items.map(&:name).to_json
+
   end
 
   # GET /items/1
@@ -48,14 +51,13 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:item])
-    @item.user = current_user # Not accessbile attribute
+    @item = current_user.items.new(params[:item])
 
     respond_to do |format|
       if @item.save
