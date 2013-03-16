@@ -16,6 +16,6 @@ class Loan < ActiveRecord::Base
   end
   
   def item_attributes=(item_attributes)
-    self.item = self.user.items.find_or_create_by_email(item_attributes[:name])
+    self.item = self.user.items.find_or_create_by_name(item_attributes[:name])
   end
 end

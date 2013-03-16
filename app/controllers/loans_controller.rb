@@ -21,59 +21,12 @@ class LoansController < Base::AuthenticatedController
   end
   
   def new
-    @borrower = Borrower.create!(:name => 'foo')
     @loan = Loan.new
-    @loan.borrower = @borrower
   end
   
-  def create
-    #NOTE #CONTRACT 
-    raise 'Params MUST identify a borrower.' if params[:borrower_id].nil? && params[:borrower_name].nil? 
-    raise 'Params MUST identify an item.' if params[:item_id].nil? && params[:item_name].nil? 
-    
-    # Need to intercept params where the item or borrower is new (i.e identified by string)
-    
-    # Check if existing / new borrower
-    # Does it have an ID?
-      # Yes: Use existing borrower. 
-      #   Maybe check that the ID matches the text, if same.. same object? 
-      #   If not, new borrower
-      # No: Build a new borrower (should we check if the name of the borrower already exists? Are names unique?)
-    # Fail early - no borrower, no loan
-      
-    # NOTE Simple, first cut  
-    @borrower = if params[:borrower_id]
-        current_user.items.find params[:borrower_id]
-      else
-        Borrower.create! :email => params.delete(:borrower_email)
-      end  
-    
-    #NOTE #CONTRACT     
-    raise 'Params MUST identify a *valid* borrower.' unless @borrower
-    
-    # Check if existing / new item
-    # Does it have an ID?
-      # Yes: Check that the ID matches the text, if same.. same object. If not, new item
-      # No: Build a new item (should we check if the name of the item already exists? Are names unique?)
-      
-    # Fail early - no item, no loan  
-    
-    # NOTE Simple, first cut  
-    @item = if params[:item_id]
-        current_user.borrowers.find params[:item_id]
-      else
-        current_user.borrower.create! :name => params.delete(:item_name) # Pop :item_name out  
-      end  
-     
-    #NOTE #CONTRACT     
-    raise 'Params MUST identify a *valid* item.' unless @item
-    
-    #SMELL Duplicated code / comments above    
-    
-    # NOTE Copy borrower and item IDs into params so we can build the loan object in one pass 
-    params[:loan].merge!({:borrower_id => @borrower.id, :item_id => @item.id})
-    
-    @loan = current_user.loans.new params[:loan]
+  def create    
+    @loan = current_user.loans.new # NOTE Pick up current user
+    @loan.update_attributes(:borrower_attributes => params[:borrower], :item_attributes => params[:item])
     
     respond_to do |format|
       if @loan.save

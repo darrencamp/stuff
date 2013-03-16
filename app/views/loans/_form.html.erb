@@ -11,7 +11,7 @@
   <% end %>
  
   <%= fields_for @loan.build_borrower do |borrower_fields| %>
-    <%= borrower_fields.typeahead_email_field :email, :placeholder => "email address", :source => '/borrowers.json'  %>
+    <%= borrower_fields.typeahead_email_field :email, :placeholder => "email address", :source => '/borrowers.json', :display_field => 'email'  %>
   <% end %>  
   <div>
     <%= fields_for @loan.build_item do |item_fields| %>

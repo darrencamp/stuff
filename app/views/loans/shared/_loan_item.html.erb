@@ -1,6 +1,6 @@
 <tr>
   <td>
-    <%= loan.borrower.email %>
+    <%= loan.borrower.email if loan.borrower %>
     <p class="loan-subdetail"><%= time_ago_in_words(loan.created_at)%> ago</p>
   </td>
   <td><%= loan.item %></td>

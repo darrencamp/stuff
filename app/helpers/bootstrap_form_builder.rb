@@ -52,8 +52,8 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     text_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source] ))
   end
     
-  def typeahead_email_field  
-    email_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source] ))  
+  def typeahead_email_field(method, options = {})  
+    email_field(method, options.merge(:class => 'typeahead', :autocomplete => 'off', :'data-source' => options[:source], :'data-display-field' => options[:display_field] || 'name' ))  
   end    
     # SMELL use data- fields to set the url, etc??
     # 
