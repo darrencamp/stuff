@@ -12,8 +12,8 @@ gem 'json'
 
 
 group :assets do
-	gem 'sass-rails', '~> 3.2'
-  gem 'bootstrap-sass', '~> 2.3.0.1'
+	gem 'sass-rails'#, '~> 3.2'
+  gem 'bootstrap-sass'#, '~> 2.3.0.1'
 	gem 'coffee-rails'
 	gem 'uglifier'
 end

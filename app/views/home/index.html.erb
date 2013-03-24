@@ -1,7 +1,30 @@
-<div id="new-loan" class="hero-unit" >
-  <h2>Create a new loan</h2>
-  <%= render '/loans/form' %>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Create a new loan
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <!-- <div id="new-loan" class="hero-unit" > -->
+      <%= render '/loans/form' %>
+      <!-- </div> -->
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Create a new item
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render '/items/form' %>
+      </div>
+    </div>
+  </div>
 </div>
+
 
 <div>
   <h2>Recent loans</h2>
