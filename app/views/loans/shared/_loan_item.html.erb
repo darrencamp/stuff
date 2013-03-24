@@ -4,7 +4,8 @@
     <p class="loan-subdetail"><%= time_ago_in_words(loan.created_at)%> ago</p>
   </td>
   <td><%= loan.item_name %></td>
-  <td>        
+  <td>   
+    <div>     
     <span id="remove-loan">
       <%= form_for(loan, :html => {:method => 'delete'}) do |f| %>
           <%= f.submit "Return", :class => "btn btn-mini btn-primary" %>
@@ -16,5 +17,6 @@
           <%= submit_tag "Remind", :class => "btn btn-mini" %>
       <% end %>
     </span>
+    </div>
   </td>
 </tr>

@@ -42,14 +42,16 @@ class LoansController < Base::AuthenticatedController
   def destroy
     # SMELL   Is this really what is meant by the verb "DELETE". I kinda get it, but 
     #         it feels that 'returned' should be a status of a loan 
-    @loan = current_users.loans.find(params[:id])
+    @loan = current_user.loans.find(params[:id])
     @loan.returned_date = DateTime.now
     
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to :action => "index", :notice => 'Loan was sucessfully returned.' }
+        flash[:notice] = 'Loan was sucessfully returned.'
+        format.html { redirect_to :action => "index" }
       else
-        format.html { redirect_to @loan, :notice => 'Loan could not be successfully returned.' }
+        flash[:error] = 'Loan could not be successfully returned.'
+        format.html { redirect_to @loan }
       end
     end
   end

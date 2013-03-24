@@ -33,5 +33,5 @@ Stuff::Application.configure do
   
   # Required to autoload form builder
  # config.autoload_paths << File.join(config.root, "lib")
-  config.autoload_paths += %W(#{config.root}/lib)
+  #config.autoload_paths += %W(#{config.root}/lib)
 end
