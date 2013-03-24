@@ -6,7 +6,7 @@
 //
 //= require modernizr
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= requre typeahead
-//= require bootstrap
 //= require_tree .

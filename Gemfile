@@ -12,8 +12,8 @@ gem 'json'
 
 
 group :assets do
-	gem 'sass-rails', '~> 3.2'
-  gem 'bootstrap-sass', '~> 2.3.0.1'
+	gem 'sass-rails'#, '~> 3.2'
+  gem 'bootstrap-sass'#, '~> 2.3.0.1'
 	gem 'coffee-rails'
 	gem 'uglifier'
 end
@@ -30,6 +30,8 @@ gem 'rails3-jquery-autocomplete'
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano', '1.3.0.rc11' # SMELL tracking a release candidate - needed for new features 
+  gem 'quiet_assets'
+  gem 'thin' # NOTE Using thin as development webserver as Webrick throws spurious errors
 end
 
 # To use debugger

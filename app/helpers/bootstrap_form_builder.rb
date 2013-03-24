@@ -1,3 +1,12 @@
+# <form class="form-inline">
+#   <input type="text" class="input-small" placeholder="Email">
+#   <input type="password" class="input-small" placeholder="Password">
+#   <label class="checkbox">
+#     <input type="checkbox"> Remember me
+#   </label>
+#   <button type="submit" class="btn">Sign in</button>
+# </form>
+
 class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   
   def text_field(method, options={})
@@ -21,7 +30,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
     
     # SMELL I'm just being slack here, but I'm avoiding a check for nil.
     #   Still, I can see a reason to add more :type values here
-    case options[:type]
+    case options.delete(:button_type)
       # SMELL space required at end of :class = 'string' to avoid trashing options[:class] if used   
       when :large then options[:class] = 'btn btn-large btn-primary ' + options[:class].to_s # nil.to_s = '' 
         
@@ -31,11 +40,11 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
     button_class = options[:class] ||= 'btn' # SMELL repeated 'btn' class from above
     options.merge!(:class => button_class)
-    @template.content_tag(:div, :class => 'control-group') do
-      @template.content_tag(:div, :class => 'controls') do   
+   # @template.content_tag(:div, :class => 'xcontrol-group') do
+  #    @template.content_tag(:div, :class => 'xcontrols') do   
         super
-      end
-    end     
+  #    end
+  #  end     
   end  
 
   def check_box(method, options = {}, checked_value = "1", unchecked_value = "0")
@@ -77,13 +86,14 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
         label(method, label_content, {:class => 'control-label'}) 
       end
         
+
     #NOTE Commenting out the control classes so we don't have fat forms. See #BUG note above    
-    @template.content_tag(:div, :class => 'xcontrol-group') do
-      label_tag + 
-      @template.content_tag(:div, :class => 'xcontrols') do
+  #  @template.content_tag(:div, :class => 'xcontrol-group') do
+  #    label_tag + 
+  #    @template.content_tag(:div, :class => 'xcontrols') do
         yield
-      end
-    end  
+  #    end
+  #  end  
   end    
   
   def bootstrap_checkbox(method, label_content, options={})

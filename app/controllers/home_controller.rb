@@ -5,6 +5,8 @@ class HomeController < Base::AuthenticatedController
   set_menu_item :home
   
   def index
+    @loan = current_user.loans.new
+    @item = current_user.items.new
     @recent_loans = current_user.loans.where('returned_date is null').order('created_at DESC')
 
     # SMELL this really requires a social connection between current user and loans from
