@@ -11,8 +11,11 @@
     </div>
 
   <% end %>
-  
+  <input type="file" accept="image/*;capture=camera">
   <%= f.text_field :name, :placeholder => "Name" %>
   <%= f.text_field :description, :placeholder => "Description" %>
   <%= f.submit %>
+  <p>Create a new item by adding its details here. The name will uniquely identify the item,
+     so make your names as descriptive as possible.</p> 
+  <p><emphasis>e.g.</emphasis> DVD - Lord of the Rings Vol. 1</p>
 <% end %>
