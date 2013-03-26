@@ -11,16 +11,29 @@
   <% end %>
  
   
-  <%= fields_for @loan.build_borrower do |borrower_fields| %>
-    <%= borrower_fields.typeahead_email_field :email, :placeholder => "email address", 
-      :source => '/borrowers.json', :display_field => 'email'  %>
+  <%= fields_for @borrower do |borrower_fields| %>
+    <%= borrower_fields.typeahead_email_field :email, :placeholder => "borrower email address", 
+      :source => '/borrowers.json', :display_field => 'email', :update_id => 'borrower_id'  %>
+    <%# SMELL This should be in the field builder %>    
+    <%= hidden_field_tag :borrower_id %>  
   <% end %>  
-    <%= fields_for @loan.build_item do |item_fields| %>
+  <%= fields_for @loan.build_item do |item_fields| %>
       <%= item_fields.typeahead_text_field :name, :placeholder => "item name", 
-        :source => '/items.json', :display_field => 'name'    %>
+        :source => '/items.json', :display_field => 'name', :update_id => 'item_id'  %>
+      <%# SMELL This should be in the field builder %>  
+      <%= hidden_field_tag :item_id %>    
   <% end %>
 
 
   <%= f.submit %>
 
+  <hr />
+  <h4>Additional information (if creating a new borrower or item)</h4>
+  <%= fields_for @borrower do |borrower_fields| %>
+    <%= borrower_fields.text_field :name, :placeholder => "borrower name" %>
+  <% end %>
+  <%= fields_for @loan.build_item do |item_fields| %>
+      <%= item_fields.text_field :description, :placeholder => "item description" %>
+  <% end %>
+  <p>NB: This information is not required. You can add additional information later.</p>
 <% end %>

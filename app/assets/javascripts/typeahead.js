@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-	$('.typeahead').typeahead({
+	jQuery('.typeahead').typeahead({
 	      source: function (query, process) {
 						display_field = $(event.target).data("display-field")
 	          objects = [];
@@ -15,7 +15,7 @@ jQuery(document).ready(function(){
 	          });
 	      },
 	      updater: function(item) {
-				  $(update_id).val(map[item].id);
+				  jQuery('#' + update_id).val(map[item].id);
 	        return item;
 	      }  
 	})

@@ -58,7 +58,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   end
   
   def typeahead_text_field(method, options = {})
-    text_field method, merge_typeahead_options(options)   
+    text_field method, merge_typeahead_options(options)    
   end
     
   def typeahead_email_field(method, options = {})  
@@ -70,7 +70,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   def merge_typeahead_options(options)
     options.merge(
       :class => 'typeahead', :autocomplete => 'off', 
-      :'data-source' => options[:source], :'data-display-field' => options[:display_field] 
+      :'data-source' => options[:source], 
+      :'data-display-field' => options[:display_field], 
+      :'data-update-id' => options[:update_id] 
     )  
   end  
   
