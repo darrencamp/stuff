@@ -5,10 +5,11 @@ class LoansController < Base::AuthenticatedController
   autocomplete :item, :name
     
   def index
-    @loan = Loan.new # NOTE Used to create item from index page
+    @loan = current_user.loans.new # NOTE Used to create item from index page
+    @borrower = @loan.build_borrower
     
-    @loans = current_user.loans.where('returned_date is null')
-    @loans.where('user_id = ?', current_user.id)
+    # SMELL returned_date is a magic field. Use AASM instead
+    @loans = current_user.loans.where('returned_date is null').includes(:borrower).includes(:item).order('created_at DESC')
     @loans.all
   end
   
@@ -21,12 +22,25 @@ class LoansController < Base::AuthenticatedController
   end
   
   def new
-    @loan = Loan.new
+    @loan = current_user.loans.new
+    @borrower = @loan.build_borrower
   end
   
   def create    
     @loan = current_user.loans.new # NOTE Pick up current user
-    @loan.update_attributes(:borrower_attributes => params[:borrower], :item_attributes => params[:item])
+    
+    # Determine borrower
+    @borrower = nil
+    @borrower = current_user.borrowers.find(params[:borrower_id]) unless params[:borrower_id].blank?    
+    @borrower = current_user.borrowers.find_or_initialize_by_email(params[:borrower]) unless @borrower
+    @loan.borrower = @borrower
+        
+    # Determine item
+    @item = nil
+    @item = current_user.items.find(params[:item_id]) unless params[:item_id].blank?    
+    @item = current_user.items.find_or_initialize_by_name(params[:item]) unless @item
+   
+    @loan.item = @item
     
     respond_to do |format|
       if @loan.save
@@ -41,7 +55,7 @@ class LoansController < Base::AuthenticatedController
   
   def destroy
     # SMELL   Is this really what is meant by the verb "DELETE". I kinda get it, but 
-    #         it feels that 'returned' should be a status of a loan 
+    #         it feels that 'returned' should be a status of a loan. See note re AASM
     @loan = current_user.loans.find(params[:id])
     @loan.returned_date = DateTime.now
     
