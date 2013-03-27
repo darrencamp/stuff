@@ -43,9 +43,8 @@ class LoansController < Base::AuthenticatedController
     
     respond_to do |format|
       if @loan.save
-        format.html { 
-          flash[:notice] = 'loan created.'
-          redirect_to(controller: 'home', action: 'index') }
+        flash[:notice] = 'Loan created'
+        format.html { redirect_to action: 'index' }
       else
         format.html { render :action => "new" }
       end

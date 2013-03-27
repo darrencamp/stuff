@@ -59,7 +59,8 @@ class BorrowersController < Base::AuthenticatedController
 
     respond_to do |format|
       if @borrower.save
-        format.html { redirect_to @borrower, notice: 'Borrower was successfully created.' }
+        flash[:notice] = 'Borrower created'
+        format.html { redirect_to action: 'index' }
         format.json { render json: @borrower, status: :created, location: @borrower }
       else
         format.html { render action: "new" }
