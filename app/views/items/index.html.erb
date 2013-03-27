@@ -1,9 +1,19 @@
-<h1>Listing items</h1>
-
-<div id="new-item" class="hero-unit" >
-  <h2>Create a new item</h2>
-  <%= render 'form' %>
-</div>    
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Create a new item
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <!-- <div id="new-loan" class="hero-unit" > -->
+        <div class="accordion-inner">
+          <%= render '/items/form' %>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
 
 <table class="table">
   <tr>
@@ -22,7 +32,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>

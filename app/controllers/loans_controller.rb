@@ -6,7 +6,7 @@ class LoansController < Base::AuthenticatedController
     
   def index
     @loan = current_user.loans.new # NOTE Used to create item from index page
-    @borrower = @loan.build_borrower
+    @loan_borrower = @loan.build_borrower
     
     # SMELL returned_date is a magic field. Use AASM instead
     @loans = current_user.loans.where('returned_date is null').includes(:borrower).includes(:item).order('created_at DESC')
@@ -38,8 +38,7 @@ class LoansController < Base::AuthenticatedController
     # Determine item
     @item = nil
     @item = current_user.items.find(params[:item_id]) unless params[:item_id].blank?    
-    @item = current_user.items.find_or_initialize_by_name(params[:item]) unless @item
-   
+    @item = current_user.items.find_or_initialize_by_name(params[:item]) unless @item   
     @loan.item = @item
     
     respond_to do |format|

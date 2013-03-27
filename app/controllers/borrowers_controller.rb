@@ -6,7 +6,7 @@ class BorrowersController < Base::AuthenticatedController
   # GET /borrowers.json
   def index
     
-    @borrower = Borrower.new # NOTE Used to create borrower from index page
+    @borrower = current_user.borrowers.new # NOTE Used to create borrower from index page
     
     # NOTE Plan here is to have a variety of queries that can be called (e.g. search by name)
     @borrowers = case params[:query]

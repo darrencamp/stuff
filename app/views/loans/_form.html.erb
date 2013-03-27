@@ -1,6 +1,6 @@
 <%= form_for(@loan, :html => {:class => "form-inline"}) do |f| %>
   <% if @loan.errors.any? %>
-    <div id="error_explaination">
+    <div id="error_explanation">
       <h2><%= /#{pluralize(@loan.errors.count, "error")} stopped this loan from being saved:/ %></h2>
       <ul>
         <% @loan.errors.full_messages.each do |msg| %>
@@ -11,7 +11,7 @@
   <% end %>
  
   
-  <%= fields_for @borrower do |borrower_fields| %>
+  <%= fields_for @loan_borrower do |borrower_fields| %>
     <%= borrower_fields.typeahead_email_field :email, :placeholder => "borrower email address", 
       :source => '/borrowers.json', :display_field => 'email', :update_id => 'borrower_id'  %>
     <%# SMELL This should be in the field builder %>    
@@ -29,7 +29,7 @@
 
   <hr />
   <h4>Additional information (if creating a new borrower or item)</h4>
-  <%= fields_for @borrower do |borrower_fields| %>
+  <%= fields_for @loan_borrower do |borrower_fields| %>
     <%= borrower_fields.text_field :name, :placeholder => "borrower name" %>
   <% end %>
   <%= fields_for @loan.build_item do |item_fields| %>

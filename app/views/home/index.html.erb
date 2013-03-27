@@ -6,11 +6,9 @@
       </a>
     </div>
     <div id="collapseOne" class="accordion-body collapse">
-      <!-- <div id="new-loan" class="hero-unit" > -->
-        <div class="accordion-inner">
-          <%= render '/loans/form' %>
-        </div>
-      <!-- </div> -->
+      <div class="accordion-inner">
+        <%= render '/loans/form' %>
+      </div>
     </div>
   </div>
   <div class="accordion-group">
@@ -22,6 +20,18 @@
     <div id="collapseTwo" class="accordion-body collapse">
       <div class="accordion-inner">
         <%= render '/items/form' %>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree">
+        Create a new borrower
+      </a>
+    </div>
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render '/borrowers/form' %>
       </div>
     </div>
   </div>
