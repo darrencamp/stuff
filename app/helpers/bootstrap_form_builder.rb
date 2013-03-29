@@ -70,9 +70,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   def merge_typeahead_options(options)
     options.merge(
       :class => 'typeahead', :autocomplete => 'off', 
-      :'data-source' => options[:source], 
-      :'data-display-field' => options[:display_field], 
-      :'data-update-id' => options[:update_id] 
+      :'data-source' => options.delete(:source), 
+      :'data-display-field' => options.delete(:display_field), 
+      :'data-update-id' => options.delete(:update_id) 
     )  
   end  
   
