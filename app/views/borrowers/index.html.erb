@@ -1,0 +1,38 @@
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Create a new borrower
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <!-- <div id="new-loan" class="hero-unit" > -->
+        <div class="accordion-inner">
+          <%= render '/borrowers/form' %>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>  
+
+<table class="table">
+  <tr>
+    <th>Email</th>
+    <th>Name</th>
+    <th colspan=3>Actions</th>
+  </tr>
+
+<% @borrowers.each do |borrower| %>
+  <tr>
+    <td><%= borrower.email %></td>
+    <td><%= borrower.name %></td>
+    <td><%= link_to 'Show', borrower %></td>
+    <td><%= link_to 'Edit', edit_borrower_path(borrower) %></td>
+    <td><%= link_to 'Destroy', borrower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New borrower', new_borrower_path %>
