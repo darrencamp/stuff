@@ -25,13 +25,13 @@ gem 'rails3-jquery-autocomplete'
 
 # Use unicorn as the web server
 # gem 'unicorn'
+gem 'thin' # NOTE Using thin as development webserver as Webrick throws spurious errors
 
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'
   gem 'rvm-capistrano', '1.3.0.rc11' # SMELL tracking a release candidate - needed for new features 
   gem 'quiet_assets'
-  gem 'thin' # NOTE Using thin as development webserver as Webrick throws spurious errors
 end
 
 # To use debugger
