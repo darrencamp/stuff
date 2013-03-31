@@ -27,6 +27,10 @@ set :ssh_options, { :forward_agent => true }
 set(:deploy_to){ "/home/#{user}/web/#{rails_env}"}
 set :keep_releases, 5
 
+set :rails_env,   "staging"
+set :unicorn_env, "staging"
+set :app_env,     "staging"
+
 before "deploy:assets:precompile", 'deploy:symlink_shared'
 
 namespace :deploy do
