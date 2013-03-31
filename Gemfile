@@ -29,6 +29,7 @@ gem 'unicorn'
 # Deploy with Capistrano
 group :development do
   gem 'capistrano'
+  gem 'capistrano-unicorn', :require => false
   gem 'rvm-capistrano', '1.3.0.rc11' # SMELL tracking a release candidate - needed for new features 
   gem 'quiet_assets'
   gem 'thin' # NOTE Using thin as development webserver as Webrick throws spurious errors

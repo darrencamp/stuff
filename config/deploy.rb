@@ -5,6 +5,7 @@ set :stages, %w(production staging)
 set :default_stage, "staging"
 
 require 'capistrano/ext/multistage'
+require 'capistrano-unicorn'
 
 #load 'config/recipes/rvm'
 
@@ -30,6 +31,9 @@ set :keep_releases, 5
 set :rails_env,   "staging"
 set :unicorn_env, "staging"
 set :app_env,     "staging"
+
+after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
+after 'deploy:restart', 'unicorn:restart'  # app preloaded
 
 before "deploy:assets:precompile", 'deploy:symlink_shared'
 
