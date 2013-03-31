@@ -8,7 +8,7 @@
 # See http:/unicorn.bogomips.org/Unicorn/Configurator.html for complete
 # documentation.
 
-rails_env 'staging' # SMELL hard coding
+rails_env = 'staging' # SMELL hard coding
 
 # Use at least one worker per core if you're on a dedicated server,
 # more will usually help for _short_ waits on databases/caches.
