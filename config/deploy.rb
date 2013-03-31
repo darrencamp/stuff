@@ -1,5 +1,5 @@
 # NOTE Move require "bundler/capistrano" to end of file if using 'set :bundle_roles' 
-$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) 
 require "bundler/capistrano"
 
 set :stages, %w(production staging)
