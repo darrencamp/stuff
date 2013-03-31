@@ -42,6 +42,8 @@ namespace :deploy do
 
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    # SMELL move to deploy/staging.rb
+    run "ln -nfs #{shared_path}/db/staging.sqlite3  #{release_path}/db/staging.sqlite3"
   end
 end
 
