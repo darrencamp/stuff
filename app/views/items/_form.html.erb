@@ -13,5 +13,9 @@
   <% end %>
   <%= f.text_field :name, :placeholder => "Name" %>
   <%= f.text_field :description, :placeholder => "Description" %>
+  <div>
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.text_field :tag_list %>
+  </div>
   <%= f.submit %>
 <% end %>
