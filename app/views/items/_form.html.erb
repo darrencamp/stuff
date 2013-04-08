@@ -13,5 +13,8 @@
   <% end %>
   <%= f.text_field :name, :placeholder => "Name" %>
   <%= f.text_field :description, :placeholder => "Description" %>
+  <div class="tags">
+    <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)" %>
+  </div>
   <%= f.submit %>
 <% end %>
