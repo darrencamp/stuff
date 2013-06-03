@@ -9,4 +9,6 @@
 //= require bootstrap
 //= require jquery_ujs
 //= requre typeahead
+//= require jquery.purr
+//= require best_in_place
 //= require_tree .

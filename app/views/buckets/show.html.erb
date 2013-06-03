@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= best_in_place @bucket, :name %></h2>
+<%= markdown(@bucket.description) %>
+
+<%= link_to 'Edit', edit_bucket_path(@bucket) %> |
+<%= link_to 'Back', buckets_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@bucket, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @bucket.errors.any? %>
+  <div class="control-group">
+    <div class="controls">
+      <div id="error_explanation">
+        <h2><%= pluralize(@bucket.errors.count, "error") %> prohibited this bucket from being saved:</h2>
+
+        <ul>
+        <% @bucket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>    
+    </div>
+  </div>
+
+  <% end %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_field :name, :placeholder => "Name" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_area :description, :placeholder => "Description", :class => "input-block-level"%>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

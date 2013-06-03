@@ -10,6 +10,7 @@ Stuff::Application.routes.draw do
   resources :reminder
   resources :borrowing
   resources :borrowers
+  resources :buckets
   
 #  resource :welcome, :only => :show
   

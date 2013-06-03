@@ -1,0 +1,20 @@
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Create a new bucket
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render '/buckets/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% @buckets.each do |b| %>
+  <section class='bucket'>
+    <%= link_to b.name, bucket_path(b) %>
+  </section>
+<% end %>
