@@ -4,4 +4,6 @@ class Bucket < ActiveRecord::Base
 
   validates_uniqueness_of :name, :scope => :user_id
   validates_presence_of :user 
+
+  has_many :items
 end

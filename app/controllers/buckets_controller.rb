@@ -24,6 +24,8 @@ class BucketsController < Base::AuthenticatedController
   # GET /buckets/1.json
   def show
     @bucket = current_user.buckets.find(params[:id])
+    @item = Item.new
+    @item.bucket = @bucket
 
     respond_with @bucket
   end
