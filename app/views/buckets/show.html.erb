@@ -1,7 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= best_in_place @bucket, :name %></h2>
-<%= markdown(@bucket.description) %>
+<div class="bucket">
+  <h2><%= best_in_place @bucket, :name %></h2>
+  <div class="bucket-description">
+    <div class="bucket-markdown">
+      <%= markdown(@bucket.description) %>
+    </div>
+    <img class="bucket-qrcode" src="<%= qrcodes_path :format => :svg, :path => bucket_url(@bucket.id) %>"/>
+  </div>
+  <%= link_to 'Edit', edit_bucket_path(@bucket) %>
+</div>
 
 <div class="accordion" id="accordion2">
   <div class="accordion-group">
@@ -19,7 +27,6 @@
     </div>
   </div>
 </div>
-
 <table class="table">
   <tr>
     <th>Name</th>
@@ -40,5 +47,3 @@
 <% end %>
 </table>
 
-<%= link_to 'Edit', edit_bucket_path(@bucket) %> |
-<%= link_to 'Back', buckets_path %>

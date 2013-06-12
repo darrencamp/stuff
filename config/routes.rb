@@ -11,6 +11,7 @@ Stuff::Application.routes.draw do
   resources :borrowing
   resources :borrowers
   resources :buckets
+  resources :qrcodes
   
 #  resource :welcome, :only => :show
   
