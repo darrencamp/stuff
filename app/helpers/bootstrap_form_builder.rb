@@ -72,7 +72,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
       :class => 'typeahead', :autocomplete => 'off', 
       :'data-source' => options.delete(:source), 
       :'data-display-field' => options.delete(:display_field), 
-      :'data-update-id' => options.delete(:update_id) 
+      :'data-update-id' => options.delete(:update_id)
     )  
   end  
   

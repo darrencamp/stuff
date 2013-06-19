@@ -11,9 +11,18 @@
     </div>
 
   <% end %>
-  <%= f.hidden_field :bucket_id %>
   <%= f.text_field :name, :placeholder => "Name" %>
   <%= f.text_field :description, :placeholder => "Description" %>
+
+  <div class="bucket">
+    <%= fields_for @item.bucket do |bucket_fields| %>
+        <%= bucket_fields.typeahead_text_field :name, :placeholder => "Bucket name", 
+          :source => '/buckets.json', :display_field => 'name', :update_id => 'bucket_id' %>
+        <%# SMELL This should be in the field builder %>  
+        <%= hidden_field_tag :bucket_id %>    
+    <% end %>
+  </div>
+
   <div class="tags">
     <%= f.text_field :tag_list, :placeholder => "Tags (separated by commas)" %>
   </div>

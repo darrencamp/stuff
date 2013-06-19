@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
   def index
     
     @item = Item.new # NOTE Used to create item from index page
+    @item_bucket = @item.build_bucket
     
     # NOTE Plan here is to have a variety of queries that can be called (e.g. search by name)
     @items = case params[:query]
@@ -15,10 +16,8 @@ class ItemsController < ApplicationController
       else
         items = Item.arel_table
         current_user.items.where(items[:name].matches("%#{params[:query]}%")).order('name').all
-      end  
-      
-        
-      
+      end
+
     respond_to do |format|
       format.html # index.html.erb
      # format.json { render json: @items.map(&:name) }
@@ -42,6 +41,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new 
+    @item_bucket = @item.build_bucket
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +58,11 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = current_user.items.new(params[:item])
+
+    @bucket = nil
+    @bucket = current_user.buckets.find(params[:bucket_id]) unless params[:bucket_id].blank?
+    @bucket = current_user.buckets.find_or_initialize_by_name(params[:bucket]) unless @bucket
+    @item.bucket = @bucket
 
     respond_to do |format|
       if @item.save
