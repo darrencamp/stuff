@@ -1,0 +1,6 @@
+<% @buckets.each do |b| %>
+  <div>
+    <p><%= b.name %></p>
+    <img class="bucket-qrcode" src="<%= qrcodes_path :format => :svg, :path => bucket_url(b.id) %>"/>
+  </div>
+<% end %>
