@@ -13,8 +13,19 @@
   </div>
 </div>
 
-<% @buckets.each do |b| %>
-  <section class='bucket'>
-    <%= link_to b.name, bucket_path(b) %>
-  </section>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buckets.each do |b| %>
+    <tr>
+      <td><%= link_to b.name, bucket_path(b) %></td>
+      <td><%= b.items.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

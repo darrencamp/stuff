@@ -61,7 +61,6 @@ class ItemsController < ApplicationController
 
     @bucket = nil
     @bucket = current_user.buckets.find(params[:bucket_id]) unless params[:bucket_id].blank?
-    @bucket = current_user.buckets.find_or_initialize_by_name(params[:bucket]) unless @bucket
     @item.bucket = @bucket
 
     respond_to do |format|

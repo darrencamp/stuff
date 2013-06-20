@@ -15,7 +15,7 @@
   <%= f.text_field :description, :placeholder => "Description" %>
 
   <div class="bucket">
-    <%= fields_for @item.bucket do |bucket_fields| %>
+    <%= fields_for @item_bucket do |bucket_fields| %>
         <%= bucket_fields.typeahead_text_field :name, :placeholder => "Bucket name", 
           :source => '/buckets.json', :display_field => 'name', :update_id => 'bucket_id' %>
         <%# SMELL This should be in the field builder %>  

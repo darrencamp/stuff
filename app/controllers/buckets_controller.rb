@@ -26,6 +26,8 @@ class BucketsController < Base::AuthenticatedController
     @bucket = current_user.buckets.find(params[:id])
     @item = Item.new
     @item.bucket = @bucket
+    #smell: ask tom about this...I'm not sure how to handle this.
+    @item_bucket = @item.bucket
 
     respond_with @bucket
   end
