@@ -6,4 +6,8 @@ class Bucket < ActiveRecord::Base
   validates_presence_of :user 
 
   has_many :items
+
+  def to_description_hash
+    {:title => name, :id => id}
+  end
 end
