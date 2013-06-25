@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
   has_many :items
   has_many :loans
   has_many :borrowers
+  has_many :buckets
 end

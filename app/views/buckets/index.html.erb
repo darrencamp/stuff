@@ -1,0 +1,31 @@
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Create a new bucket
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render '/buckets/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to "Generate QR Codes", qrcodes_path(:obj_type => "buckets") %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buckets.each do |b| %>
+    <tr>
+      <td><%= link_to b.name, bucket_path(b) %></td>
+      <td><%= b.items.count %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

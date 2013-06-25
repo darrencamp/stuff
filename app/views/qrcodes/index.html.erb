@@ -1,0 +1,6 @@
+<% @objs.each do |b| %>
+  <div>
+    <p><%= b[:title] %></p>
+    <img class="bucket-qrcode" src="<%= qrcodes_path :format => :svg, :path => b[:url] %>"/>
+  </div>
+<% end %>

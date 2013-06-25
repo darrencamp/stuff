@@ -9,7 +9,9 @@ gem 'devise-encryptable'
 
 gem 'sqlite3'
 gem 'json'
-
+gem 'redcarpet'
+gem 'best_in_place'
+gem 'rqrcode-rails3'
 
 group :assets do
 	gem 'sass-rails'#, '~> 3.2'
