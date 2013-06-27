@@ -2,7 +2,7 @@
   <h2><%= best_in_place @bucket, :name %></h2>
   <div class="bucket-description">
     <div class="bucket-markdown">
-      <%= markdown(@bucket.description) %>
+      <%= markdown(@bucket.description) unless @bucket.description.blank?%>
     </div>
     <img class="bucket-qrcode" src="<%= qrcodes_path :format => :svg, :path => bucket_url(@bucket.id) %>"/>
   </div>

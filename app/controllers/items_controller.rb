@@ -52,6 +52,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = current_user.items.find(params[:id])
+    @item_bucket = @item.bucket || @item.build_bucket
   end
 
   # POST /items
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(params[:item])
 
     @bucket = nil
-    @bucket = current_user.buckets.find(params[:bucket_id]) unless params[:bucket_id].blank?
+    @bucket = current_user.buckets.find(params[:bucket_id]) unless params[:bucket_id].blank? || @item.build_bucket(params[:bucket])
     @item.bucket = @bucket
 
     respond_to do |format|
@@ -79,9 +80,14 @@ class ItemsController < ApplicationController
   # PUT /items/1.json
   def update
     @item = current_user.items.find(params[:id])
+    @item_bucket = (current_user.buckets.find(params[:bucket_id]) unless params[:bucket_id].blank?) || @item.build_bucket(params[:bucket])
+    @item_bucket.user = current_user
+
+    @item.update_attributes(params[:item])
+    @item.bucket = @item_bucket
 
     respond_to do |format|
-      if @item.update_attributes(params[:item])
+      if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else

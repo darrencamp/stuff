@@ -14,4 +14,7 @@ class Item < ActiveRecord::Base
     def to_description_hash
       {:title => name, :id => id}
     end
+  def bucket_name
+    bucket.name unless bucket.nil?
+  end
 end

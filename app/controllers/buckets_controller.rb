@@ -61,4 +61,18 @@ class BucketsController < Base::AuthenticatedController
     @bucket.update_attributes(params[:bucket])
     respond_with @bucket
   end
+
+    # DELETE /items/1
+  # DELETE /items/1.json
+  def destroy
+    @bucket = current_user.buckets.find(params[:id])
+    @bucket.destroy
+
+    respond_to do |format|
+      format.html { redirect_to buckets_url }
+      format.json { head :no_content }
+    end
+  end
+
+
 end
