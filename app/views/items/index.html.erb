@@ -1,7 +1,7 @@
-<div class="accordion" id="accordion2">
+<div class="accordion" id="accordion1">
   <div class="accordion-group">
     <div class="accordion-heading">
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
         Create a new item
       </a>
     </div>
@@ -37,8 +37,25 @@
 <% end %>
 </table>
 
-<h2>import</h2>
-<%= form_tag import_items_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Import Items
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+        <div class="accordion-inner">
+          <!-- http://www.randomout.com/2012/07/hacking-more-visually-appealing-file.html have a look at this
+          or http://gregpike.net/demos/bootstrap-file-input/demo.html 
+
+          for a better styling of the select file control
+          -->
+          <%= form_tag import_items_path, multipart: true, :class => "form-inline" do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import", :class => "btn" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
