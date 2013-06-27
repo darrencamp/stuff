@@ -36,3 +36,9 @@
   </tr>
 <% end %>
 </table>
+
+<h2>import</h2>
+<%= form_tag import_items_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

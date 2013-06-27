@@ -25,6 +25,7 @@ gem 'modernizr-rails'
 gem 'jquery-rails'
 gem 'rails3-jquery-autocomplete'
 gem 'acts-as-taggable-on'
+gem 'roo'
 
 # Use unicorn as the web server
 gem 'unicorn'

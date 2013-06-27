@@ -11,10 +11,12 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :bucket
   attr_accessible :bucket_id, :bucket_attributes
 
-    def to_description_hash
-      {:title => name, :id => id}
-    end
   def bucket_name
     bucket.name unless bucket.nil?
   end
+
+  def to_description_hash
+    {:title => name, :id => id}
+  end
+
 end

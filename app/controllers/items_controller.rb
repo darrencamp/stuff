@@ -1,3 +1,5 @@
+require 'datafile.rb'
+
 class ItemsController < ApplicationController
   
   set_menu_item :items
@@ -107,5 +109,20 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    importedItems = DataFile.new(params[:file])
+    importedItems.each do |i|
+      item = current_user.items.find_by_name(i["name"]) || current_user.items.new(i.to_hash)
+      bucket = nil
+      bucket = current_user.buckets.find_by_name(i["bucket_name"])
+      if bucket.nil? && !(i["bucket_name"].blank?)
+        bucket = current_user.buckets.new({:name => i["bucket_name"]})
+      end
+      item.bucket = bucket
+      item.save!
+    end
+    redirect_to root_url, notice: "Products Imported."
   end
 end
