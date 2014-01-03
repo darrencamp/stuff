@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '4.0.2'
 gem 'devise'
 gem 'devise-encryptable'
 
@@ -10,7 +10,7 @@ gem 'devise-encryptable'
 gem 'sqlite3'
 gem 'json'
 gem 'redcarpet'
-gem 'best_in_place'
+gem 'best_in_place', :github => 'bernat/best_in_place', :branch => 'rails-4'
 gem 'rqrcode-rails3'
 
 group :assets do

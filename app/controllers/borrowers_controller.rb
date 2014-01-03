@@ -55,7 +55,7 @@ class BorrowersController < Base::AuthenticatedController
   # POST /borrowers
   # POST /borrowers.json
   def create
-    @borrower = current_user.borrowers.new(params[:borrower])
+    @borrower = current_user.borrowers.new(borrower_params)
 
     respond_to do |format|
       if @borrower.save
@@ -75,7 +75,7 @@ class BorrowersController < Base::AuthenticatedController
     @borrower = current_user.borrowers.find(params[:id])
 
     respond_to do |format|
-      if @borrower.update_attributes(params[:borrower])
+      if @borrower.update_attributes(borrower_params)
         format.html { redirect_to @borrower, notice: 'Borrower was successfully updated.' }
         format.json { head :no_content }
       else
@@ -95,5 +95,11 @@ class BorrowersController < Base::AuthenticatedController
       format.html { redirect_to borrowers_url }
       format.json { head :no_content }
     end
+  end
+  
+  private
+  
+  def borrower_params
+    params.require(:borrower).permit(:name, :email)
   end
 end  

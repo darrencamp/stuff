@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = current_user.items.new(params[:item])
+    @item = current_user.items.new(item_params)
 
     @bucket = nil
     @bucket = current_user.buckets.find(params[:bucket_id]) unless params[:bucket_id].blank?
@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.find(params[:id])
 
     respond_to do |format|
-      if @item.update_attributes(params[:item])
+      if @item.update!(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
@@ -102,4 +102,10 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :description, :tag_list, bucket_attributes: [:bucket_id] )
+  end  
 end

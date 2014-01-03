@@ -32,13 +32,13 @@ class LoansController < Base::AuthenticatedController
     # Determine borrower
     @borrower = nil
     @borrower = current_user.borrowers.find(params[:borrower_id]) unless params[:borrower_id].blank?    
-    @borrower = current_user.borrowers.find_or_initialize_by_email(params[:borrower]) unless @borrower
+    @borrower = current_user.borrowers.find_or_initialize_by_email(borrower_params) unless @borrower
     @loan.borrower = @borrower
         
     # Determine item
     @item = nil
     @item = current_user.items.find(params[:item_id]) unless params[:item_id].blank?    
-    @item = current_user.items.find_or_initialize_by_name(params[:item]) unless @item   
+    @item = current_user.items.find_or_initialize_by_name(item_params) unless @item   
     @loan.item = @item
     
     respond_to do |format|
@@ -67,5 +67,20 @@ class LoansController < Base::AuthenticatedController
       end
     end
   end
+  
+  private
+
+  # SMELL is this used?
+  def loan_params
+    params.require(:loan).permit(:borrower_id, :item_id)
+  end  
+  
+  def borrower_params
+    params.require(:borrower).permit(:name, :email)
+  end
+  
+  def item_params
+    params.require(:item).permit(:name, :description, :tag_list, bucket_attributes: [:bucket_id] )
+  end  
   
 end

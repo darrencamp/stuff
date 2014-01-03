@@ -5,10 +5,10 @@ class Loan < ActiveRecord::Base
   belongs_to :item
   
   accepts_nested_attributes_for :borrower
-  attr_accessible :borrower_id, :borrower_attributes
+  # attr_accessible :borrower_id, :borrower_attributes
   
   accepts_nested_attributes_for :item
-  attr_accessible :item_id, :item_attributes
+  # attr_accessible :item_id, :item_attributes
   
   
   def borrower_attributes=(borrower_attributes)

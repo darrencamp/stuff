@@ -1,1 +1,1 @@
-rvm use 1.9.3@stuff --create
+rvm use 2.0.0@stuff_rails4 --create

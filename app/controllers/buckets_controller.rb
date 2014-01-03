@@ -40,7 +40,7 @@ class BucketsController < Base::AuthenticatedController
   # POST /buckets
   # POST /buckets.json
   def create
-    @bucket = current_user.buckets.new(params[:bucket])
+    @bucket = current_user.buckets.new(bucket_params)
 
     respond_to do |format|
       if @bucket.save
@@ -58,7 +58,13 @@ class BucketsController < Base::AuthenticatedController
   # PUT /buckets/1.json
   def update
     @bucket = current_user.buckets.find(params[:id])
-    @bucket.update_attributes(params[:bucket])
+    @bucket.update!(bucket_params)
     respond_with @bucket
   end
+  
+  private
+
+  def bucket_params
+    params.require(:bucket).permit(:name, :description)
+  end  
 end

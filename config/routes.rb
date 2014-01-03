@@ -13,10 +13,11 @@ Stuff::Application.routes.draw do
   resources :buckets
   resources :qrcodes
   
-#  resource :welcome, :only => :show
+  resource :welcome, :only => :show
+  resource :about, :only => :show
   
-  match '/welcome' => 'welcome#show'
-  match '/about' => 'welcome#about'
+  # match '/welcome' => 'welcome#show'
+  # match '/about' => 'welcome#about'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
