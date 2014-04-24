@@ -32,13 +32,13 @@ class LoansController < Base::AuthenticatedController
     # Determine borrower
     @borrower = nil
     @borrower = current_user.borrowers.find(params[:borrower_id]) unless params[:borrower_id].blank?    
-    @borrower = current_user.borrowers.find_or_initialize_by_email(borrower_params) unless @borrower
+    @borrower = current_user.borrowers.find_or_initialize_by(borrower_params) unless @borrower
     @loan.borrower = @borrower
         
     # Determine item
     @item = nil
     @item = current_user.items.find(params[:item_id]) unless params[:item_id].blank?    
-    @item = current_user.items.find_or_initialize_by_name(item_params) unless @item   
+    @item = current_user.items.find_or_initialize_by(item_params) unless @item   
     @loan.item = @item
     
     respond_to do |format|
