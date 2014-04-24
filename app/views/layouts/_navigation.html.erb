@@ -73,8 +73,8 @@
           <li class="<%= menu_item_li_class(:settings) %>">
             <%= link_to 'Settings', edit_user_registration_path %>  
           </li>
-          <li class="<%= menu_item_li_class(:about) %>">
-            <%= link_to 'About', about_path %>
+          <li class="<%#= menu_item_li_class(:about) %>">
+            <%#= link_to 'About', about_path %>
           </li>
           <li>
             <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
