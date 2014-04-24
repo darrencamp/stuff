@@ -9,11 +9,11 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415105842) do
+ActiveRecord::Schema.define(version: 20140424000755) do
 
-  create_table "borrowers", :force => true do |t|
+  create_table "borrowers", force: true do |t|
     t.string   "email"
     t.string   "name"
     t.integer  "user_id"
@@ -21,54 +21,55 @@ ActiveRecord::Schema.define(:version => 20130415105842) do
     t.datetime "updated_at"
   end
 
-  create_table "buckets", :force => true do |t|
+  create_table "buckets", force: true do |t|
     t.string  "name"
     t.string  "description"
     t.integer "user_id"
   end
 
-  create_table "items", :force => true do |t|
+  create_table "items", force: true do |t|
     t.string   "name"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "bucket_id"
   end
 
-  create_table "loans", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+  create_table "loans", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.datetime "returned_date"
     t.integer  "borrower_id"
     t.integer  "item_id"
   end
 
-  create_table "taggings", :force => true do |t|
+  create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
     t.integer  "tagger_id"
     t.string   "tagger_type"
-    t.string   "context",       :limit => 128
+    t.string   "context",       limit: 128
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
 
-  create_table "tags", :force => true do |t|
+  create_table "tags", force: true do |t|
     t.string "name"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -78,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20130415105842) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "name"
   end
 

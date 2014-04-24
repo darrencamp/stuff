@@ -4,6 +4,9 @@ log/*.log
 tmp/
 .sass-cache/
 config/database.yml
+config/secrets.yml
+
 public/assets/
 **/.DS_Store
 .DS_Store
+
