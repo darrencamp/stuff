@@ -36,6 +36,7 @@ group :development do
   gem 'rvm-capistrano'#, '1.3.0.rc11' # SMELL tracking a release candidate - needed for new features 
   gem 'quiet_assets'
   gem 'thin' # NOTE Using thin as development webserver as Webrick throws spurious errors
+  gem 'spring' # Rails application preloader
 end
 
 # To use debugger
