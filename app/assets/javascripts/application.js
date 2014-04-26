@@ -8,7 +8,7 @@
 //= require jquery
 //= require bootstrap
 //= require jquery_ujs
-//= requre typeahead
+//= requre bootstrap3-typeahead.js
 //= require jquery.purr
 //= require best_in_place
 //= require_tree .

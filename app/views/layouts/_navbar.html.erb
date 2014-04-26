@@ -1,0 +1,72 @@
+<nav  class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand <%= menu_item_li_class(:home) %>" href="/">Stuff</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+          <%# 
+            SMELL Having two ways to the dashboard is redundant - I want to ditch 
+                  'home' and just replace it with a link to the brand. The dashboard
+                  *is* the brand.
+          %>
+          <li class="<%= menu_item_li_class(:home) %>"><a href="/">Home</a></li>
+        <% else %> 
+          <li class="<%= menu_item_li_class(:welcome) %>"><%= link_to 'Welcome', root_path %></li>
+        <% end %>
+        
+        
+        
+        <% if user_signed_in? %>
+          <!-- <li class="<%#= menu_item_li_class(:loans) %>" ><%#= link_to 'Buckets', loans_path %></li> -->
+          <li class="<%= menu_item_li_class(:items) %>" ><%= link_to 'Items', items_path %></li>    
+          <li class="<%= menu_item_li_class(:loans) %>" ><%= link_to 'Loans', loans_path %></li>   
+          <li class="<%= menu_item_li_class(:borrowers) %>" ><%= link_to 'Borrowers', borrowers_path %></li>   
+         <li class="<%= menu_item_li_class(:buckets) %>" ><%= link_to 'Buckets', buckets_path %></li>   
+
+
+        <% else %>
+          <li class="<%= menu_item_li_class(:sign_up) %>">
+            <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+          <li class="<%= menu_item_li_class(:login) %>">  
+            <%= link_to 'Login', new_user_session_path %>
+
+          </li>
+           
+        <% end %>
+      </ul>
+      <% if user_signed_in? %>
+      <%# SMELL This has never actually worked %>
+      <form class="navbar-form navbar-right form-search" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li class="<%= menu_item_li_class(:settings) %>">
+          <%= link_to 'Settings', edit_user_registration_path %>  
+        </li>
+        <li class="<%#= menu_item_li_class(:about) %>">
+          <%#= link_to 'About', about_path %>
+        </li>
+        <li>
+          <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+        </li>
+      </ul>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
